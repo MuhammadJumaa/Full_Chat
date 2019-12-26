@@ -14,7 +14,6 @@ function App() {
       <UserList />
       <MessageList />
       <SendMessageForm/>
-      <h1>test</h1>
     </div>
   );
 }
