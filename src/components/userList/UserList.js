@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Input } from 'rsuite';
 import { Icon } from 'rsuite';
+import './UserList.scss'
 
 
 export default class UserList extends Component {

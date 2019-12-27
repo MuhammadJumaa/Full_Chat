@@ -1,6 +1,6 @@
 import React from 'react';
-import UserList from './components/UserList';
-import MessageList from './components/MessageList';
+import UserList from './components/userList/UserList';
+import MessageList from './components/messageList/MessageList';
 import './App.css';
 import 'rsuite/dist/styles/rsuite-default.css'; // or 'rsuite/dist/styles/rsuite-default.css'
 

@@ -1,0 +1,60 @@
+.messengerSearchAndusersList {
+    width: 400px;
+    padding: 20px 10px;
+    height: 100%;
+    overflow: auto;
+  
+    .messengerSearch {
+      margin-bottom: 20px;
+  
+      .settings {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+  
+        a i:before {
+          font-size: 22px;
+        }
+  
+        h5 {
+          color: black;
+        }
+      }
+    }
+  
+    .usersList .item {
+      margin-bottom: 15px;
+  
+      &:last-child {
+        margin-bottom: 0;
+      }
+  
+      .itemCont {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+  
+      .img img {
+        width: 70px;
+        border-radius: 100%;
+      }
+  
+      .text {
+        h1 {
+          font-size: 14px;
+          color: black;
+          margin: 0;
+        }
+  
+        p {
+          margin: 0;
+          max-width: 95%;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+    }
+  }

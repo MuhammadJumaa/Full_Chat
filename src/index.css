@@ -18,20 +18,7 @@ h1 {
 }
 #root ,.App {height: 100%;}
 #root main {display: flex; height:100%;}
-.messengerSearchAndusersList {width:400px; padding:20px 10px; height: 100%; overflow: auto;}
-.messengerSearchAndusersList .messengerSearch {margin-bottom:20px;}
-.messengerSearchAndusersList .messengerSearch .settings { margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;}
-.messengerSearchAndusersList .messengerSearch .settings a i:before {font-size: 22px;}
-.messengerSearchAndusersList .messengerSearch .settings h5 {color:black}
-
-
-.messengerSearchAndusersList .usersList .item {margin-bottom: 15px;}
-.messengerSearchAndusersList .usersList .item:last-child {margin-bottom: 0;}
-.messengerSearchAndusersList .usersList .item .itemCont {display: flex; align-items: center; justify-content: space-between;}
-.messengerSearchAndusersList .usersList .item .img img {width:70px; border-radius: 100%;}
-.messengerSearchAndusersList .usersList .item .text h1 { font-size: 14px; color: black; margin:0}
-.messengerSearchAndusersList .usersList .item .text p { margin: 0;max-width: 95%; white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 
 
 
-main .messageList {width:100%;}
+
