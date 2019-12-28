@@ -26,7 +26,7 @@ export default class UserList extends Component {
                     <div className="item">
                         <div className="itemCont">
                             <div className="img">
-                                <img src="https://randomuser.me/api/portraits/women/32.jpg" />
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="test" />
                             </div>
                             <div className="text">
                                 <h1>Darlene Steeves</h1>
@@ -37,7 +37,7 @@ export default class UserList extends Component {
                     <div className="item">
                         <div className="itemCont">
                             <div className="img">
-                                <img src="https://randomuser.me/api/portraits/men/69.jpg" />
+                                <img src="https://randomuser.me/api/portraits/men/69.jpg" alt="test" />
                             </div>
                             <div className="text">
                                 <h1>Maya Barnett</h1>
@@ -48,7 +48,7 @@ export default class UserList extends Component {
                     <div className="item">
                         <div className="itemCont">
                             <div className="img">
-                                <img src="https://randomuser.me/api/portraits/women/31.jpg" />
+                                <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="test" />
                             </div>
                             <div className="text">
                                 <h1>Sam Henry</h1>
@@ -59,7 +59,7 @@ export default class UserList extends Component {
                     <div className="item">
                         <div className="itemCont">
                             <div className="img">
-                                <img src="https://randomuser.me/api/portraits/women/31.jpg" />
+                                <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="test" />
                             </div>
                             <div className="text">
                                 <h1>Sam Henry</h1>
@@ -70,7 +70,7 @@ export default class UserList extends Component {
                     <div className="item">
                         <div className="itemCont">
                             <div className="img">
-                                <img src="https://randomuser.me/api/portraits/women/31.jpg" />
+                                <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="test" />
                             </div>
                             <div className="text">
                                 <h1>Sam Henry</h1>
@@ -81,7 +81,7 @@ export default class UserList extends Component {
                     <div className="item">
                         <div className="itemCont">
                             <div className="img">
-                                <img src="https://randomuser.me/api/portraits/women/31.jpg" />
+                                <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="test" />
                             </div>
                             <div className="text">
                                 <h1>Sam Henry</h1>
@@ -92,7 +92,7 @@ export default class UserList extends Component {
                     <div className="item">
                         <div className="itemCont">
                             <div className="img">
-                                <img src="https://randomuser.me/api/portraits/women/31.jpg" />
+                                <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="test" />
                             </div>
                             <div className="text">
                                 <h1>Sam Henry</h1>
@@ -103,7 +103,7 @@ export default class UserList extends Component {
                     <div className="item">
                         <div className="itemCont">
                             <div className="img">
-                                <img src="https://randomuser.me/api/portraits/women/31.jpg" />
+                                <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="test" />
                             </div>
                             <div className="text">
                                 <h1>Sam Henry</h1>
@@ -114,7 +114,7 @@ export default class UserList extends Component {
                     <div className="item">
                         <div className="itemCont">
                             <div className="img">
-                                <img src="https://randomuser.me/api/portraits/women/31.jpg" />
+                                <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="test" />
                             </div>
                             <div className="text">
                                 <h1>Sam Henry</h1>
@@ -125,7 +125,7 @@ export default class UserList extends Component {
                     <div className="item">
                         <div className="itemCont">
                             <div className="img">
-                                <img src="https://randomuser.me/api/portraits/women/31.jpg" />
+                                <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="test" />
                             </div>
                             <div className="text">
                                 <h1>Sam Henry</h1>
@@ -136,7 +136,7 @@ export default class UserList extends Component {
                     <div className="item">
                         <div className="itemCont">
                             <div className="img">
-                                <img src="https://randomuser.me/api/portraits/women/31.jpg" />
+                                <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="test" />
                             </div>
                             <div className="text">
                                 <h1>Sam Henry</h1>
@@ -147,7 +147,7 @@ export default class UserList extends Component {
                     <div className="item">
                         <div className="itemCont">
                             <div className="img">
-                                <img src="https://randomuser.me/api/portraits/women/31.jpg" />
+                                <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="test" />
                             </div>
                             <div className="text">
                                 <h1>Sam Henry</h1>
@@ -158,7 +158,7 @@ export default class UserList extends Component {
                     <div className="item">
                         <div className="itemCont">
                             <div className="img">
-                                <img src="https://randomuser.me/api/portraits/women/31.jpg" />
+                                <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="test" />
                             </div>
                             <div className="text">
                                 <h1>Sam Henry</h1>

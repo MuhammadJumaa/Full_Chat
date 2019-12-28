@@ -22,3 +22,15 @@ h1 {
 
 
 
+.show-fake-browser.login-page .rs-content {
+  padding: 20px;
+  margin: 20px;
+  height: 500px;
+}
+.show-fake-browser.login-page .rs-panel {
+  margin-top: 70px;
+}
+.navbar-brand {
+  padding: 18px 20px;
+  display: inline-block;
+}

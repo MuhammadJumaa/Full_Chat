@@ -324,20 +324,6 @@ module.exports = function(webpackEnv) {
     module: {
       strictExportPresence: true,
       rules: [
-        {
-          test: /\.less$/,
-          use: [
-            {
-              loader: 'style-loader', // creates style nodes from JS strings
-            },
-            {
-              loader: 'css-loader', // translates CSS into CommonJS
-            },
-            {
-              loader: 'less-loader', // compiles Less to CSS
-            },
-          ],
-        },
         // Disable require.ensure as it's not a standard language feature.
         { parser: { requireEnsure: false } },
 

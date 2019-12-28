@@ -1,17 +1,23 @@
 import React from 'react';
-import UserList from './components/userList/UserList';
-import MessageList from './components/messageList/MessageList';
+import {BrowserRouter as Router,Route,Switch} from "react-router-dom";
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Chat from './pages/Chat';
 import './App.css';
-import 'rsuite/dist/styles/rsuite-default.css'; // or 'rsuite/dist/styles/rsuite-default.css'
+import 'rsuite/dist/styles/rsuite-default.css';
 
 
 function App() {
   return (
     <div className="App">
-      <main>
-        <UserList />
-        <MessageList />
-      </main>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Chat} />
+          <Route exact path="/Chat" component={Chat} />
+          <Route exact path="/Login" component={Login} />
+          <Route exact path="/Register" component={Register} />
+        </Switch>
+      </Router>
     </div>
   );
 }
