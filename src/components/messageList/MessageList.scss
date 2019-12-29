@@ -1,5 +1,49 @@
-main {
-    .messageList{
-        width: 100%
+    .messageList {
+        width: 100%;
+        padding: 10px;
+        position: relative;
+        .top {
+            .titleAndIcons {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .title {
+                    h1 {
+                        font-size:22px;
+                        color:black;
+                    }
+                }
+                .Icons {
+                    a {
+                        margin-right:20px;
+                        i {
+                            &:before {
+                                font-size: 26px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .center {
+            
+        }
+        .bottom {
+            position: absolute;
+            width: 100%;
+            right:0;
+            left:0px;
+            bottom:10px;
+            padding: 0 20px;
+            form {
+                input {
+                    float: left;
+                    margin-right: 15px;
+                    width: calc(100% - 85px);
+                }
+                button {
+
+                }
+            }
+        }
     }
-}

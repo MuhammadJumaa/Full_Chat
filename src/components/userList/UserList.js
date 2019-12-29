@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Input } from 'rsuite';
-import { Icon } from 'rsuite';
+import { Input , Icon } from 'rsuite';
 import './UserList.scss'
 
 

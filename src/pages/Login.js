@@ -1,7 +1,30 @@
 import React, { Component } from 'react'
-import { Container,Header,Navbar,Content,FlexboxGrid,Panel,Form,FormGroup,ControlLabel,FormControl,ButtonToolbar,Button} from 'rsuite';
+import { Container,Header,Navbar,Content,FlexboxGrid,Panel,Form,FormGroup,ControlLabel,FormControl,ButtonToolbar,Button,Alert} from 'rsuite';
 
 export default class MessageList extends Component {
+    state = {
+        username : "",
+        password : "",
+        error:false
+    }
+    validateForm = () => {
+        const {username,password} = this.state;
+        if(username === "" || password === ""){
+            Alert.error('This is an error message.')
+            return false;
+        }
+        return true;
+    }
+    login = async (e) => {
+        e.preventDefault();
+        console.log("login");
+        if(!this.validateForm()){
+          this.setState({
+            error:true
+          });
+          return;
+        };
+    }
     render() {
         return (
             <div className="show-fake-browser login-page">
@@ -17,18 +40,18 @@ export default class MessageList extends Component {
                         <FlexboxGrid justify="center">
                             <FlexboxGrid.Item colspan={12}>
                                 <Panel header={<h3>Login</h3>} bordered>
-                                    <Form fluid>
+                                    <Form fluid onSubmit={this.login}>
                                         <FormGroup>
-                                            <ControlLabel>Username or email address</ControlLabel>
-                                            <FormControl name="name" />
+                                            <ControlLabel htmlFor="username">Username</ControlLabel>
+                                            <FormControl onChange={this.changeInput}  name="username" id="username" type="text" />
                                         </FormGroup>
                                         <FormGroup>
-                                            <ControlLabel>Password</ControlLabel>
-                                            <FormControl name="password" type="password" />
+                                            <ControlLabel htmlFor="password">Password</ControlLabel>
+                                            <FormControl  onChange={this.changeInput} name="password" id="password" type="password" />
                                         </FormGroup>
                                         <FormGroup>
                                             <ButtonToolbar>
-                                                <Button appearance="primary">Sign in</Button>
+                                                <Button type="submit" appearance="primary" >Sign in</Button>
                                                 <Button appearance="link">Register</Button>
                                             </ButtonToolbar>
                                         </FormGroup>
