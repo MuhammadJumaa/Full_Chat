@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Container,Header,Navbar,Content,FlexboxGrid,Panel,Form,FormGroup,ControlLabel,FormControl,ButtonToolbar,Button,Alert} from 'rsuite';
+import { Container,Header,Navbar,Content,FlexboxGrid,Panel,Form,FormGroup,ControlLabel,ButtonToolbar,Button,Alert} from 'rsuite';
 
-export default class MessageList extends Component {
+class Login extends Component {
     state = {
         username : "",
         password : "",
@@ -10,22 +10,28 @@ export default class MessageList extends Component {
     validateForm = () => {
         const {username,password} = this.state;
         if(username === "" || password === ""){
-            Alert.error('This is an error message.')
+            Alert.error('Please dont leave any space');
             return false;
         }
         return true;
     }
-    login = async (e) => {
+    handleOnChange = (e) => {
+        this.setState({
+           [e.target.name] : e.target.value
+        })
+    }
+    loginBtn = async (e) => {
         e.preventDefault();
-        console.log("login");
         if(!this.validateForm()){
           this.setState({
             error:true
           });
           return;
         };
+        this.props.history.push("/");
     }
     render() {
+        const {username,password,error} = this.state;
         return (
             <div className="show-fake-browser login-page">
                 <Container>
@@ -40,14 +46,14 @@ export default class MessageList extends Component {
                         <FlexboxGrid justify="center">
                             <FlexboxGrid.Item colspan={12}>
                                 <Panel header={<h3>Login</h3>} bordered>
-                                    <Form fluid onSubmit={this.login}>
+                                    <Form fluid onSubmit={this.loginBtn}>
                                         <FormGroup>
                                             <ControlLabel htmlFor="username">Username</ControlLabel>
-                                            <FormControl onChange={this.changeInput}  name="username" id="username" type="text" />
+                                            <input type="text" onChange={this.handleOnChange} value={username} name="username" id="username" className={error ? "rs-input input-error" : "rs-input"} />
                                         </FormGroup>
                                         <FormGroup>
                                             <ControlLabel htmlFor="password">Password</ControlLabel>
-                                            <FormControl  onChange={this.changeInput} name="password" id="password" type="password" />
+                                            <input type="text" onChange={this.handleOnChange} value={password} name="password" id="password" className={error ? "rs-input input-error" : "rs-input"} />
                                         </FormGroup>
                                         <FormGroup>
                                             <ButtonToolbar>
@@ -65,3 +71,5 @@ export default class MessageList extends Component {
         )
     }
 }
+
+export default Login;
