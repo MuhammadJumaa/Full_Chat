@@ -9,6 +9,9 @@ body {
 html,body {
   height: 100%;
 }
+label {
+  font-size: 16px;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -18,9 +21,6 @@ h1 {
 }
 #root ,.App {height: 100%;}
 #root main {display: flex; height:100%;}
-
-
-
 
 .show-fake-browser.login-page .rs-content {
   padding: 20px;
@@ -37,4 +37,8 @@ h1 {
 
 .input-error {
   border-color:red !important;
+}
+
+.errorMessage {
+  color:red;
 }
