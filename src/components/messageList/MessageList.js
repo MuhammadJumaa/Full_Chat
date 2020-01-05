@@ -1,8 +1,24 @@
 import React, { Component } from 'react'
-import { Icon , Input , Button } from 'rsuite';
+import { Icon } from 'rsuite';
 import './MessageList.scss'
+import SendMessageForm from '../SendMessageForm';
 
-export default class MessageList extends Component {
+const DUMMY_DATA = [
+    {
+        senderId:'Fatih',
+        text:'naber'
+    },
+    {
+        senderId:'jumma',
+        text:'nasılsın'
+    },
+    {
+        senderId:'yunus',
+        text:'iyi sen'
+    }
+]
+
+class MessageList extends Component {
     render() {
         return (
             <section className="messageList">
@@ -25,15 +41,20 @@ export default class MessageList extends Component {
                     </div>
                 </div>
                 <div className="center">
-                    chat List
+                    {DUMMY_DATA.map((message,index)=>{
+                        return (
+                        <div key={index}>
+                            <div>{message.senderId}</div>
+                            <div>{message.text}</div>
+                        </div>
+                        )
+                    })
+                    }
                 </div>
-                <div className="bottom">
-                    <form action="">
-                        <Input placeHolder="Type A Message @name" />
-                        <Button color="blue">Submit</Button>
-                    </form>
-                </div>
+                <SendMessageForm/>
             </section>
         )
     }
 }
+
+export default MessageList;
