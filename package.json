@@ -5,6 +5,7 @@
   "dependencies": {
     "@babel/core": "7.7.4",
     "@pusher/chatkit": "^0.7.18",
+    "@pusher/chatkit-client": "^1.13.3",
     "@svgr/webpack": "4.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
