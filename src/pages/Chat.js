@@ -7,6 +7,14 @@ const tokenUrl = "https://us1.pusherplatform.io/services/chatkit_token_provider/
 const instanceLocator = "v1:us1:97ce846c-dbaa-4ea9-a56d-6d64c8fed484"
 
 class Chat extends Component {
+    
+    constructor(){
+        super()
+        this.state = {
+            messages:[]
+        }
+    }
+
 
     componentDidMount(){
         const chatManager = new ChatManager({
@@ -21,11 +29,14 @@ class Chat extends Component {
         chatManager.connect()
         .then(currentUser=>{
             //console.log(currentUser);
-            currentUser.subscribeToRoomMultipart({
+            currentUser.subscribeToRoom({
                 roomId: "1f799f64-e162-46c2-a347-d0a406be56dc",
                 hooks: {
                   onMessage: message => {
-                    console.log("received message", message)
+                    console.log("received message", message.text)
+                    this.setState({
+                        messages:[...this.state.messages,message]
+                    })
                   }
                 },
                 messageLimit: 10
@@ -37,10 +48,11 @@ class Chat extends Component {
     }
 
     render(){
+        console.log('this.state.message',this.state.messages);
         return(
             <main>
                 <UserList />
-                <MessageList />
+                <MessageList messages={this.state.messages} />
             </main>
         )
     }
