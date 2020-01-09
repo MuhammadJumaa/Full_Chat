@@ -7,15 +7,13 @@ const tokenUrl = "https://us1.pusherplatform.io/services/chatkit_token_provider/
 const instanceLocator = "v1:us1:97ce846c-dbaa-4ea9-a56d-6d64c8fed484"
 
 class Chat extends Component {
-    
     constructor(){
         super()
         this.state = {
             messages:[]
         }
+        this.sendMessage = this.sendMessage.bind(this);
     }
-
-
     componentDidMount(){
         const chatManager = new ChatManager({
             instanceLocator,
@@ -24,16 +22,14 @@ class Chat extends Component {
                 url:tokenUrl
             })
         })
-           
-
         chatManager.connect()
         .then(currentUser=>{
-            //console.log(currentUser);
-            currentUser.subscribeToRoom({
+            this.currentUser = currentUser
+            this.currentUser.subscribeToRoom({
                 roomId: "1f799f64-e162-46c2-a347-d0a406be56dc",
                 hooks: {
                   onMessage: message => {
-                    console.log("received message", message.text)
+                    //console.log("received message", message.text)
                     this.setState({
                         messages:[...this.state.messages,message]
                     })
@@ -46,18 +42,22 @@ class Chat extends Component {
             console.log('Error on connection', err)
         })
     }
-
+    sendMessage(text){
+        this.currentUser.sendMessage({
+            text,
+            roomId:"1f799f64-e162-46c2-a347-d0a406be56dc"
+        });
+    }
     render(){
-        console.log('this.state.message',this.state.messages);
+        //console.log('this.state.message',this.state.messages);
         return(
             <main>
                 <UserList />
-                <MessageList messages={this.state.messages} />
+                <MessageList messages={this.state.messages} sendMessage={this.sendMessage} />
             </main>
         )
     }
 }
-
 export default Chat;
 
 

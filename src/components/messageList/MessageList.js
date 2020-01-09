@@ -6,6 +6,7 @@ import Message from '../Message';
 
 class MessageList extends Component {
     render() {
+        //console.log(this.props);
         return (
             <section className="messageList">
                 <div className="top">
@@ -34,7 +35,7 @@ class MessageList extends Component {
                     })
                     }
                 </div>
-                <SendMessageForm/>
+                <SendMessageForm sendMessage={this.props.sendMessage}/>
             </section>
         )
     }

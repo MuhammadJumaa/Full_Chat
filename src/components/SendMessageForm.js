@@ -17,10 +17,10 @@ class SendMessageForm extends Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        console.log(this.state.message);
+        this.props.sendMessage(this.state.message);
     }
     render() {
-        console.log(this.state.message);
+        console.log(this.props);
         return (
             <div className="bottom">
                 <form
@@ -31,7 +31,7 @@ class SendMessageForm extends Component {
                         onChange={this.handleChange}
                         value={this.state.message}
                         placeholder="Type A Message @name" />
-                    <Button color="blue">Submit</Button>
+                    <Button type="submit" color="blue">Submit</Button>
                 </form>
             </div>
         )
