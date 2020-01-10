@@ -20,7 +20,6 @@ class SendMessageForm extends Component {
         this.props.sendMessage(this.state.message);
     }
     render() {
-        console.log(this.props);
         return (
             <div className="bottom">
                 <form

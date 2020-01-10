@@ -6,7 +6,7 @@ import './UserList.scss'
 export default class UserList extends Component {
     render() {
         return (
-            <section className="messengerSearchAndusersList">
+            <section className="userList">
                 <div className="messengerSearch">
                     <div className="settings">
                         <a href="#/" className="cog">

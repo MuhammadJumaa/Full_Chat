@@ -12,6 +12,9 @@ html,body {
 label {
   font-size: 16px;
 }
+ul,li {
+  list-style-type:none;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
