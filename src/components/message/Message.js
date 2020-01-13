@@ -1,4 +1,5 @@
 import React from 'react'
+import './message.scss'
 
 function Message(props) {
     return (

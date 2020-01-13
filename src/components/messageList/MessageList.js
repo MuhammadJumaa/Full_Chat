@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Icon } from 'rsuite';
 import './MessageList.scss'
 import SendMessageForm from '../SendMessageForm';
-import Message from '../Message';
+import Message from '../message/Message';
 
 class MessageList extends Component {
     render() {
