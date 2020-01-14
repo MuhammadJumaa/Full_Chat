@@ -11,11 +11,14 @@ class Chat extends Component {
     constructor(){
         super()
         this.state = {
+            roomId:null,
             messages:[],
             joinableRooms:[],
             joinedRooms:[]
         }
         this.sendMessage = this.sendMessage.bind(this);
+        this.subscribeToRoom = this.subscribeToRoom.bind(this);
+        this.getRooms = this.getRooms.bind(this);
     }
     componentDidMount(){
         const chatManager = new ChatManager({
@@ -28,34 +31,48 @@ class Chat extends Component {
         chatManager.connect()
         .then(currentUser=>{
             this.currentUser = currentUser
-            this.currentUser.getJoinableRooms()
-            .then(joinableRooms => {
-                this.setState({
-                    joinableRooms,
-                    joinedRooms:this.currentUser.rooms
-                })
-            })
-            .catch(errr => console.log('error on joinableRooms: ',errr))
-            this.currentUser.subscribeToRoom({
-                roomId: "1f799f64-e162-46c2-a347-d0a406be56dc",
-                hooks: {
-                  onMessage: message => {
-                    this.setState({
-                        messages:[...this.state.messages,message]
-                    })
-                  }
-                },
-                messageLimit: 10
-              })
+            this.getRooms();
         })
         .catch(err => {
             console.log('Error on connection', err)
         })
     }
+    getRooms(){
+        this.currentUser.getJoinableRooms()
+        .then(joinableRooms => {
+            this.setState({
+                joinableRooms,
+                joinedRooms:this.currentUser.rooms
+            })
+        })
+        .catch(err => console.log('error on joinableRooms: ',err))
+    }
+    subscribeToRoom(roomId){
+        this.setState({messages:[]})
+        this.currentUser.subscribeToRoom({
+            roomId: roomId,
+            hooks: {
+              onMessage: message => {
+                this.setState({
+                    messages:[...this.state.messages,message]
+                })
+              }
+            },
+            messageLimit: 10
+        })
+        .then(room => {
+            this.setState({
+                roomId:room.id
+            })
+            this.getRooms()
+        })
+        .catch(err => console.log('error on subscribing to room:' , err))
+    }
+
     sendMessage(text){
         this.currentUser.sendMessage({
             text,
-            roomId:"1f799f64-e162-46c2-a347-d0a406be56dc"
+            roomId:this.state.roomId
         });
     }
     render(){
@@ -63,7 +80,10 @@ class Chat extends Component {
             <main>
                 <UserList />
                 <MessageList messages={this.state.messages} sendMessage={this.sendMessage} />
-                <RoomList rooms={[...this.state.joinableRooms,...this.state.joinedRooms]}/>
+                <RoomList 
+                    subscribeToRoom={this.subscribeToRoom}
+                    rooms={[...this.state.joinableRooms,...this.state.joinedRooms]}
+                />
             </main>
         )
     }
