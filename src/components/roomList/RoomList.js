@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
+import SendRoomForm from '../SendRoomForm';
 import './RoomList.scss'
 
 class RoomList extends Component {
     render() {
         const orderedRooms = [...this.props.rooms].sort((a,b)=>a.id - b.id)
         return (
-            <section className="roomList">
+            <section className="roomCont">
                 <div className="title">
                     <h5>Room List</h5>
                 </div>
-                <div className="list">
+                <div className="roomList">
+                    <div className="list">
                         <ul>
                             {
                                 orderedRooms.map(room=>{
@@ -28,6 +30,8 @@ class RoomList extends Component {
                             
                         </ul>
                     </div>
+                </div>
+                <SendRoomForm/>
             </section>
         )
     }
