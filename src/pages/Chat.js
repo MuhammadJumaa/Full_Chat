@@ -19,6 +19,7 @@ class Chat extends Component {
         this.sendMessage = this.sendMessage.bind(this);
         this.subscribeToRoom = this.subscribeToRoom.bind(this);
         this.getRooms = this.getRooms.bind(this);
+        this.createRoom = this.createRoom.bind(this);
     }
     componentDidMount(){
         const chatManager = new ChatManager({
@@ -75,12 +76,24 @@ class Chat extends Component {
             roomId:this.state.roomId
         });
     }
+    createRoom(name){
+        this.currentUser.createRoom({
+            name
+        })
+        .then(room => this.subscribeToRoom(room.id))
+        .catch(err=>console.log('error with createRoom : ',err))
+    }   
     render(){
         return(
             <main>
                 <UserList />
-                <MessageList messages={this.state.messages} sendMessage={this.sendMessage} />
+                <MessageList 
+                    messages={this.state.messages} 
+                    sendMessage={this.sendMessage} 
+                    roomId={this.state.roomId}
+                />
                 <RoomList 
+                    createRoom={this.createRoom}
                     roomId={this.state.roomId}
                     subscribeToRoom={this.subscribeToRoom}
                     rooms={[...this.state.joinableRooms,...this.state.joinedRooms]}

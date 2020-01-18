@@ -31,7 +31,7 @@ class RoomList extends Component {
                         </ul>
                     </div>
                 </div>
-                <SendRoomForm/>
+                <SendRoomForm createRoom={this.props.createRoom}/>
             </section>
         )
     }

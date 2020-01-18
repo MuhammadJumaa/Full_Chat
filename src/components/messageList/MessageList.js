@@ -6,7 +6,17 @@ import Message from '../message/Message';
 
 class MessageList extends Component {
     render() {
-        //console.log(this.props);
+        if (!this.props.roomId) {
+            return(
+                <section className="messageList">
+                    <div className="center">
+                        <div className="joinARoom">
+                            <h1>Join a Room -> </h1>                        
+                        </div>
+                    </div>
+                </section>
+            )
+        }
         return (
             <section className="messageList">
                 <div className="top">
@@ -28,12 +38,14 @@ class MessageList extends Component {
                     </div>
                 </div>
                 <div className="center">
+                   
                     {this.props.messages.map((message,index)=>{
                         return (
                             <Message key={index} username={message.senderId} text={message.text}/>
                         )
                     })
                     }
+
                 </div>
                 <SendMessageForm sendMessage={this.props.sendMessage}/>
             </section>
