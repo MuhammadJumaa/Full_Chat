@@ -2,6 +2,27 @@
         width: 100%;
         padding: 10px;
         position: relative;
+        &.joinARoom {
+            .center {
+                height: 100%;
+                h1 {
+                    text-align:center;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                    span {
+                        font-size: 35px;
+                    }
+                    i {
+                        margin-left:15px;
+                        &:before {
+                            font-size: 35px;
+                        }
+                    }
+                }
+            }
+        }
         .top {
             .titleAndIcons {
                 display: flex;

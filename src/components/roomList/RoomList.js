@@ -1,21 +1,28 @@
 import React, { Component } from 'react'
+import SendRoomForm from '../SendRoomForm';
 import './RoomList.scss'
 
 class RoomList extends Component {
     render() {
-        console.log(this.props.rooms)
+        const orderedRooms = [...this.props.rooms].sort((a,b)=>a.id - b.id)
         return (
-            <section className="roomList">
+            <section className="roomCont">
                 <div className="title">
                     <h5>Room List</h5>
                 </div>
-                <div className="list">
+                <div className="roomList">
+                    <div className="list">
                         <ul>
                             {
-                                this.props.rooms.map(room=>{
+                                orderedRooms.map(room=>{
+                                    const active = this.props.roomId === room.id ? "active" : "";
                                     return(
-                                        <li key={room.id}>
-                                            <a href="#/">{room.name}</a>
+                                        <li key={room.id} className={"room " + active}>
+                                            <a 
+                                            onClick={() => this.props.subscribeToRoom(room.id)} 
+                                            href="/#">
+                                                # {room.name}
+                                            </a>
                                         </li>
                                     )
                                 })
@@ -23,6 +30,8 @@ class RoomList extends Component {
                             
                         </ul>
                     </div>
+                </div>
+                <SendRoomForm createRoom={this.props.createRoom}/>
             </section>
         )
     }
