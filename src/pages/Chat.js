@@ -3,21 +3,40 @@ import { ChatManager, TokenProvider } from '@pusher/chatkit-client'
 import UserList from '../components/userList/UserList';
 import MessageList from '../components/messageList/MessageList';
 import RoomList from '../components/roomList/RoomList';
-
+import axios from 'axios';
+import { Redirect } from 'react-router'
 const tokenUrl = "https://us1.pusherplatform.io/services/chatkit_token_provider/v1/97ce846c-dbaa-4ea9-a56d-6d64c8fed484/token"
 const instanceLocator = "v1:us1:97ce846c-dbaa-4ea9-a56d-6d64c8fed484"
 
 class Chat extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             messages:[],
             joinableRooms:[],
+            redirect: false,
             joinedRooms:[]
         }
         this.sendMessage = this.sendMessage.bind(this);
+        axios.post(`http://10.25.1.70:5000/api/chat`, {  })
+            .then(res => {
+                this.setState({ redirect: true })
+                console.log(res);
+                console.log(res.data);
+        })
+        .catch((e)=> {
+            this.setState({ redirect: true })
+            console.log(e);
+        });
+        setTimeout(() => {
+            //this.props.history.push("/login");
+        }, 3000);
     }
     componentDidMount(){
+       
+        if(true){
+         //   history.push('/login')
+        }
         const chatManager = new ChatManager({
             instanceLocator,
             userId:'fatih',
@@ -59,6 +78,9 @@ class Chat extends Component {
         });
     }
     render(){
+        if (true) {
+            return <Redirect to='/login'/>;
+          }
         return(
             <main>
                 <UserList />

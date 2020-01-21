@@ -1,12 +1,27 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Container, Header, Navbar, Content, FlexboxGrid, Panel, Form, FormGroup, ControlLabel, ButtonToolbar, Button } from 'rsuite';
-import {Link} from "react-router-dom";
+import axios from 'axios';
+import { Container, Header, Navbar, Content, FlexboxGrid, Panel, Form, FormGroup, ControlLabel, ButtonToolbar, Button , Alert} from 'rsuite';
+import {useHistory,Link} from "react-router-dom";
 export default function Login() {
+    var history = useHistory();
     const { register, handleSubmit, errors } = useForm();
     //const onSubmit = data => console.log(data);
-    const onSubmit = async data => {
-        console.log(data);
+    const onSubmit = async data => { 
+        axios.post(`http://10.25.1.70:5000/api/login`, { data })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+                Alert.success('Login Successful', 5000);
+                history.push('/')
+                document.getElementById("registerForm").reset();
+        })
+        .catch((e)=> {
+            console.log(e);
+        });
+        setTimeout(() => {
+            //this.props.history.push("/login");
+        }, 3000);
     };
     return (
         <div className="show-fake-browser login-page">

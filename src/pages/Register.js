@@ -1,18 +1,20 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import {Link} from "react-router-dom";
+import {useHistory,Link} from "react-router-dom";
 import axios from 'axios';
 import { Container, Header, Navbar, Content, FlexboxGrid, Panel, ButtonToolbar, Button , FormGroup , ControlLabel , Form , Alert} from 'rsuite';
 
 export default function Register() {
+    var history = useHistory();
     const { register, handleSubmit, errors ,watch } = useForm();
     //const onSubmit = data => console.log(data);
     const onSubmit = async data => { 
-        axios.post(`http://10.25.1.70:5000/api/register`, { data })
+        axios.get(`http://10.25.1.70:5000/api/register`, { data })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
                 Alert.success('Registration Successful', 5000);
+                history.push('/login')
                 document.getElementById("registerForm").reset();
         })
         .catch((e)=> {
