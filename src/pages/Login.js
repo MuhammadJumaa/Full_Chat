@@ -8,13 +8,12 @@ export default function Login() {
     const { register, handleSubmit, errors } = useForm();
     //const onSubmit = data => console.log(data);
     const onSubmit = async data => { 
-        axios.post(`http://10.25.1.70:5000/api/login`, { data })
+        axios.post(`http://localhost:5000/api/login`, { data })
             .then(res => {
-                console.log(res);
-                console.log(res.data);
-                Alert.success('Login Successful', 5000);
-                history.push('/')
-                document.getElementById("registerForm").reset();
+                if(res.data.code===200){
+                    Alert.success('Login Successful', 5000);
+                    history.push('/')
+                }
         })
         .catch((e)=> {
             console.log(e);

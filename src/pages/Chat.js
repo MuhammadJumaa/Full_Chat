@@ -15,13 +15,25 @@ class Chat extends Component {
             roomId:null,
             messages:[],
             joinableRooms:[],
-            redirect: false,
+            redirect: true,
             joinedRooms:[]
         }
         this.sendMessage = this.sendMessage.bind(this);
-        axios.post(`http://10.25.1.70:5000/api/chat`, {  })
+        
+        //setTimeout(() => {
+            //this.props.history.push("/login");
+       // }, 3000);
+        this.subscribeToRoom = this.subscribeToRoom.bind(this);
+        this.getRooms = this.getRooms.bind(this);
+        this.createRoom = this.createRoom.bind(this);
+    }
+    componentDidMount(){
+        axios.get(`http://10.25.1.70:5000/api/chat`)
             .then(res => {
-                this.setState({ redirect: true })
+                if(res.data.code===200){
+                    this.setState({ redirect:false })    
+                }
+                
                 console.log(res);
                 console.log(res.data);
         })
@@ -29,18 +41,7 @@ class Chat extends Component {
             this.setState({ redirect: true })
             console.log(e);
         });
-        setTimeout(() => {
-            //this.props.history.push("/login");
-        }, 3000);
-        this.subscribeToRoom = this.subscribeToRoom.bind(this);
-        this.getRooms = this.getRooms.bind(this);
-        this.createRoom = this.createRoom.bind(this);
-    }
-    componentDidMount(){
-       
-        if(true){
-         //   history.push('/login')
-        }
+        
         const chatManager = new ChatManager({
             instanceLocator,
             userId:'fatih',
@@ -103,7 +104,7 @@ class Chat extends Component {
         .catch(err=>console.log('error with createRoom : ',err))
     }   
     render(){
-        if (true) {
+        if (this.state.redirect) {
             return <Redirect to='/login'/>;
           }
         return(
