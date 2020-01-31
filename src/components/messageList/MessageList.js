@@ -5,7 +5,15 @@ import SendMessageForm from '../SendMessageForm';
 import Message from '../message/Message';
 
 class MessageList extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            message: '',
+            key:''
+        }
+    }
     render() {
+        /*
         if (!this.props.roomId) {
             return (
                 <section className="messageList joinARoom">
@@ -18,6 +26,7 @@ class MessageList extends Component {
                 </section>
             )
         }
+        */
         return (
             <section className="messageList">
                 <div className="top">
@@ -39,19 +48,22 @@ class MessageList extends Component {
                     </div>
                 </div>
                 <div className="center">
-
-                    {this.props.messages.map((message, index) => {
-                        return (
-                            <Message key={index} username={message.senderId} text={message.text} />
-                        )
-                    })
+                    {
+                        this.props.messages.map((message,index)=>{
+                            return(
+                                <Message 
+                                    key={index} text={message.message}
+                                />
+                            )
+                        })
                     }
-
+                    
                 </div>
-                <SendMessageForm sendMessage={this.props.sendMessage} />
+                <SendMessageForm 
+                    onSubmitMessage = {this.props.onSubmitMessage}
+                />
             </section>
         )
     }
 }
-
 export default MessageList;

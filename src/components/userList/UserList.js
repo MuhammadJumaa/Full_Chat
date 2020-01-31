@@ -10,10 +10,8 @@ export default class UserList extends Component {
         this.state = {
             users:[]
         }
-        console.log("constructor");
     }
     componentDidMount(){
-        console.log("componentDidMount");
         axios.get('http://10.16.0.63:5000/api/users')
         .then(res=> {
             console.log(res);
@@ -23,7 +21,6 @@ export default class UserList extends Component {
         })
     }
     render() {
-        console.log("render");
         return (
             <section className="userList">
                 <div className="messengerSearch">

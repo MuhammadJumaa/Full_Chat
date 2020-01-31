@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import { Button } from 'rsuite';
+import PropTypes from 'prop-types'
 
 class SendMessageForm extends Component {
+    static propTypes = {
+        onSubmitMessage: PropTypes.func.isRequired,
+    }
     constructor() {
         super()
         this.state = {
-            message: ''
+            message: '',
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -13,11 +16,13 @@ class SendMessageForm extends Component {
     handleChange(e) {
         this.setState({
             message: e.target.value
-        })
+        });
     }
     handleSubmit(e) {
         e.preventDefault();
-        this.props.sendMessage(this.state.message);
+        this.props.onSubmitMessage(this.state.message)
+        this.setState({ message: '' });
+        console.log(this.state.message);
     }
     render() {
         return (
@@ -30,7 +35,7 @@ class SendMessageForm extends Component {
                         onChange={this.handleChange}
                         value={this.state.message}
                         placeholder="Type A Message @name" />
-                    <Button type="submit" color="blue">Submit</Button>
+                    <input type="submit" value={'Send'} />
                 </form>
             </div>
         )
