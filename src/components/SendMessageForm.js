@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button } from 'rsuite';
 import PropTypes from 'prop-types'
 
 class SendMessageForm extends Component {
@@ -35,7 +36,7 @@ class SendMessageForm extends Component {
                         onChange={this.handleChange}
                         value={this.state.message}
                         placeholder="Type A Message @name" />
-                    <input type="submit" value={'Send'} />
+                    <Button type="submit" value={'Send'} color="blue">Send</Button>
                 </form>
             </div>
         )

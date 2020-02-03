@@ -1,30 +1,44 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 
 class SendRoomForm extends Component {
     constructor(){
         super()
         this.state = {
-            roomName :''
+            value :'',
+            roomName:''
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(e){
         this.setState({
-            roomName:e.target.value
+            value:e.target.value
         })
     }
     handleSubmit(e){
         e.preventDefault();
-        this.props.createRoom(this.state.roomName)
-        this.setState({roomName:''})
+        console.log("->>>>>" + this.state.value);
+        const data = {
+            value: this.state.value
+        }
+        axios.post('http://10.11.0.68:5000/api/rooms/add', {data})
+            .then((res)=>{
+                console.log("result  ->" + res)
+            })
+            .catch(err => console.log(err));
+        this.setState({
+            value:''
+        });
     }
     render() {
         return (
             <div className="roomForm">
             <form className="send-room-form" onSubmit={this.handleSubmit}>
                 <input
-                value={this.state.roomName}
+                name="roomName"
+                id="roomName"
+                value={this.state.value}
                 onChange={this.handleChange}
                 className="rs-input"
                 placeholder="Create a room"

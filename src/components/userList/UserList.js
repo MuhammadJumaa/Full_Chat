@@ -4,7 +4,7 @@ import axios from 'axios';
 import './UserList.scss'
 
 
-export default class UserList extends Component {
+class UserList extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -59,3 +59,6 @@ export default class UserList extends Component {
         )
     }
 }
+
+
+export default UserList;

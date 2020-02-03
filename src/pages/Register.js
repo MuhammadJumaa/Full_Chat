@@ -7,7 +7,6 @@ import { Container, Header, Navbar, Content, FlexboxGrid, Panel, ButtonToolbar, 
 export default function Register() {
     var history = useHistory();
     const { register, handleSubmit, errors ,watch } = useForm();
-    //const onSubmit = data => console.log(data);
     const onSubmit = async data => { 
         axios.get(`http://10.25.1.70:5000/api/register`, { data })
             .then(res => {
@@ -20,9 +19,6 @@ export default function Register() {
         .catch((e)=> {
             console.log(e);
         });
-        setTimeout(() => {
-            //this.props.history.push("/login");
-        }, 3000);
     };
     return (
         <div className="show-fake-browser login-page">
