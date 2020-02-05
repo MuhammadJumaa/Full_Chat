@@ -6,7 +6,7 @@ class SendRoomForm extends Component {
         super()
         this.state = {
             value :'',
-            roomName:''
+            roomName:'',
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,13 +18,12 @@ class SendRoomForm extends Component {
     }
     handleSubmit(e){
         e.preventDefault();
-        console.log("->>>>>" + this.state.value);
         const data = {
-            value: this.state.value
+            roomName: this.state.value
         }
         axios.post('http://10.11.0.68:5000/api/rooms/add', {data})
             .then((res)=>{
-                console.log("result  ->" + res)
+                console.log("result  ->" + res);
             })
             .catch(err => console.log(err));
         this.setState({
@@ -42,7 +41,6 @@ class SendRoomForm extends Component {
                 onChange={this.handleChange}
                 className="rs-input"
                 placeholder="Create a room"
-                required
                 />
             </form>         
         </div>
