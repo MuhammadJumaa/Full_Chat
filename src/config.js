@@ -1,0 +1,1 @@
+export default {APILink:"http://10.11.0.68:5000/api/"};

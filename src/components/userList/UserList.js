@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Input , Icon } from 'rsuite';
 import axios from 'axios';
 import './UserList.scss'
+import config from '../../config'
 
 
 class UserList extends Component {
@@ -12,9 +13,8 @@ class UserList extends Component {
         }
     }
     componentDidMount(){
-        axios.get('http://10.16.0.63:5000/api/users')
+        axios.get(config.APILink+'users')
         .then(res=> {
-            console.log(res);
             this.setState({
                 users:res.data.results
             });

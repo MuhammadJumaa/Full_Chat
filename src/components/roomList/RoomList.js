@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import SendRoomForm from '../SendRoomForm';
 import './RoomList.scss'
-
+import config from '../../config'
 class RoomList extends Component {
     constructor(props){
         super(props)
@@ -11,9 +11,9 @@ class RoomList extends Component {
         }
     }
     componentDidMount(){
-        axios.get('http://10.11.0.68:5000/api/rooms')
+        axios.get(config.APILink+'/rooms')
         .then(res=>{
-            console.log("rooms -> " + res);
+          //  console.log("rooms -> " + res);
             this.setState({
                 rooms:res.data.results
             })

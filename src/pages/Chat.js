@@ -3,7 +3,7 @@ import UserList from '../components/userList/UserList';
 import MessageList from '../components/messageList/MessageList';
 import RoomList from '../components/roomList/RoomList';
 import axios from 'axios';
-//import { Redirect } from 'react-router'
+import config from '../config'
 
 const URL = 'ws://localhost:3030'
 
@@ -18,23 +18,23 @@ class Chat extends Component {
     ws = new WebSocket(URL);
     componentDidMount(){
         this.ws.onopen = () => {
-            console.log('connected')
+           // console.log('connected')
         }
         this.ws.onclose = () => {
-            console.log("disconnected");
+         //   console.log("disconnected");
             this.setState({
                 ws: new WebSocket(URL),
             })
         }
-        axios.get(`http://10.25.1.70:5000/api/chat`)
-            .then(res => {
-                if(res.data.code===200){
-                    this.setState({ redirect:false })    
-                }
-        }).catch((e)=> {
-            this.setState({ redirect: true })
-            console.log(e);
-        });       
+        // axios.get(config.APILink+'chat')
+        //     .then(res => {
+        //         if(res.data.code===200){
+        //             this.setState({ redirect:false })    
+        //         }
+        // }).catch((e)=> {
+        //     this.setState({ redirect: true })
+        //     console.log(e);
+        // });       
         
     }
     addMessage = message =>
