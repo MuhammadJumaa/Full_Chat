@@ -3,12 +3,12 @@ import { useForm } from 'react-hook-form';
 import {useHistory,Link} from "react-router-dom";
 import axios from 'axios';
 import { Container, Header, Navbar, Content, FlexboxGrid, Panel, ButtonToolbar, Button , FormGroup , ControlLabel , Form , Alert} from 'rsuite';
-
+import config from '../config'
 export default function Register() {
     var history = useHistory();
     const { register, handleSubmit, errors ,watch } = useForm();
     const onSubmit = async data => { 
-        axios.get(`http://10.25.1.70:5000/api/register`, { data })
+        axios.post(config.APILink+`register`, { data })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
