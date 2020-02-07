@@ -3,12 +3,13 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { Container, Header, Navbar, Content, FlexboxGrid, Panel, Form, FormGroup, ControlLabel, ButtonToolbar, Button , Alert} from 'rsuite';
 import {useHistory,Link} from "react-router-dom";
+import config from '../config'
 export default function Login() {
     var history = useHistory();
     const { register, handleSubmit, errors } = useForm();
     //const onSubmit = data => console.log(data);
     const onSubmit = async data => { 
-        axios.post(`http://localhost:5000/api/login`, { data })
+        axios.post(config.APILink+`login`, { data })
             .then(res => {
                 if(res.data.code===200){
                     Alert.success('Login Successful', 5000);
