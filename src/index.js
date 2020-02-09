@@ -3,12 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createStore} from 'redux';
-import allReducer from './reducers';
+import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
+import userReducer from './reducers/userReducers';
+
+
+const rootReducer = combineReducers({
+    user:userReducer
+});
 
 const store = createStore(
-    allReducer,
+    rootReducer,
+    {user:'Mehmet'},
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );
 

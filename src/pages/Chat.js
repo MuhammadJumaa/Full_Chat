@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import UserList from '../components/userList/UserList';
 import MessageList from '../components/messageList/MessageList';
 import RoomList from '../components/roomList/RoomList';
-import axios from 'axios';
-import config from '../config'
+//import axios from 'axios';
+//import config from '../config'
 
 const URL = 'ws://localhost:3030'
 
