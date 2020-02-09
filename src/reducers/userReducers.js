@@ -1,4 +1,4 @@
-//store tarafın'dan sağlanın stateleri alır , 
+//store tarafın'dan sağlanın state'leri alır , 
 //istenildiği şekilde günceller , 
 //güncellenmiş data'yı store'a tekrar'dan gönderir.
 

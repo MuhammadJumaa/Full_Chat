@@ -71,5 +71,9 @@ class UserList extends Component {
 const mapStateToProps = state => {
     return state;
 }
+//mapstatetoprops -> state'de o anda ne var ise onu 
+//component içerisinde props olarak kullanmamızı sağlayan bir map'leme işlemi...
+
 
 export default  connect(mapStateToProps)(UserList);
+//connect -> store componente bağlamak için kullanılır.
