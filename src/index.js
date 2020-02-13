@@ -3,20 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createStore, combineReducers} from 'redux';
+import thunk from 'redux-thunk';
+import {compose , applyMiddleware , createStore} from 'redux';
 import {Provider} from 'react-redux';
-import userReducer from './reducers/userReducers';
+import rootReducer from './reducers/rootReducer';
 
-
-const rootReducer = combineReducers({
-    user:userReducer
-});
-
-const store = createStore(
-    rootReducer,
-    {user:'Mehmet'},
+const allEnhancers = compose(
+    applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    );
+);
+//compose -> Birleştirmek , iç içe getirmek anlamına geliyor.
+
+const store = createStore(rootReducer,allEnhancers);
 
 ReactDOM.render(
     <Provider store={store}>
