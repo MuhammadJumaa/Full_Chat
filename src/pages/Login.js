@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { Container, Header, Navbar, Content, FlexboxGrid, Panel, Form, FormGroup, ControlLabel, ButtonToolbar, Button , Alert} from 'rsuite';
-import {useHistory,Link} from "react-router-dom";
+import {useHistory,Link,Redirect} from "react-router-dom";
 import config from '../config'
 export default function Login() {
     var history = useHistory();
@@ -13,6 +13,7 @@ export default function Login() {
             .then(res => {
                 if(res.data.code===200){
                     Alert.success('Login Successful', 5000);
+                    localStorage.setItem('usertoken', res.data.token)
                     history.push('/')
                 }
         })
@@ -22,7 +23,10 @@ export default function Login() {
         setTimeout(() => {
             //this.props.history.push("/login");
         }, 3000);
-    };
+    };  
+    if (localStorage.usertoken) {
+        return <Redirect to='/'/>;
+      }
     return (
         <div className="show-fake-browser login-page">
             <Container>

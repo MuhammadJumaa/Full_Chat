@@ -4,6 +4,8 @@ import MessageList from '../components/messageList/MessageList';
 import RoomList from '../components/roomList/RoomList';
 import axios from 'axios';
 import config from '../config'
+import {Redirect} from  "react-router-dom";
+var jwtDecode = require('jwt-decode');
 
 const URL = 'ws://localhost:3030'
 
@@ -26,15 +28,7 @@ class Chat extends Component {
                 ws: new WebSocket(URL),
             })
         }
-        // axios.get(config.APILink+'chat')
-        //     .then(res => {
-        //         if(res.data.code===200){
-        //             this.setState({ redirect:false })    
-        //         }
-        // }).catch((e)=> {
-        //     this.setState({ redirect: true })
-        //     console.log(e);
-        // });       
+              
         
     }
     addMessage = message =>
@@ -44,12 +38,14 @@ class Chat extends Component {
         this.ws.send(JSON.stringify(message))
         this.addMessage(message)
     }
+    
     render(){
-        /*
-        if (this.state.redirect) {
+        if (!localStorage.usertoken) {
             return <Redirect to='/login'/>;
           }
-        */
+       const token = localStorage.usertoken
+       const decoded = jwtDecode(token)
+       console.log(decoded)
         return(
             <main>
                 <UserList />
