@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import UserList from '../components/userList/UserList';
 import MessageList from '../components/messageList/MessageList';
 import RoomList from '../components/roomList/RoomList';
-import axios from 'axios';
-import config from '../config'
-import {Redirect} from  "react-router-dom";
-var jwtDecode = require('jwt-decode');
 
-const URL = 'ws://localhost:3030'
+import {Redirect} from  "react-router-dom";
+//var jwtDecode = require('jwt-decode');
+
+//const URL = 'ws://localhost:3030'
 
 class Chat extends Component {
     constructor(props){
@@ -17,17 +16,17 @@ class Chat extends Component {
             redirect: true,
         }
     }
-    ws = new WebSocket(URL);
+    //ws = new WebSocket(URL);
     componentDidMount(){
-        this.ws.onopen = () => {
-           // console.log('connected')
-        }
-        this.ws.onclose = () => {
-         //   console.log("disconnected");
-            this.setState({
-                ws: new WebSocket(URL),
-            })
-        }
+        // this.ws.onopen = () => {
+        //    // console.log('connected')
+        // }
+        // this.ws.onclose = () => {
+        //  //   console.log("disconnected");
+        //     // this.setState({
+        //     //     ws: new WebSocket(URL),
+        //     // })
+        // }
               
         
     }
@@ -35,7 +34,7 @@ class Chat extends Component {
     this.setState(state => ({ messages: [message, ...state.messages] }))
     submitMessage = messageString => {
         const message = { message: messageString }
-        this.ws.send(JSON.stringify(message))
+  //      this.ws.send(JSON.stringify(message))
         this.addMessage(message)
     }
     
@@ -43,9 +42,6 @@ class Chat extends Component {
         if (!localStorage.usertoken) {
             return <Redirect to='/login'/>;
           }
-       const token = localStorage.usertoken
-       const decoded = jwtDecode(token)
-       console.log(decoded)
         return(
             <main>
                 <UserList />

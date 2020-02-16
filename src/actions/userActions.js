@@ -1,5 +1,6 @@
 import config from '../config';
 
+import axios from 'axios';
 export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
 export const FETCH_PRODUCTS_FAILURE = 'FETCH_PRODUCTS_FAILURE';
 export const FETCH_PRODUCTS_BEGIN   = 'FETCH_PRODUCTS_BEGIN';
@@ -9,10 +10,10 @@ export const fetchProductsSuccess = users => ({
   payload: { users }
 });
 
-export const fetchProductsFailure = error => ({
+export const fetchProductsFailure = error => function(){ console.log(error,3); return ({
     type: FETCH_PRODUCTS_FAILURE,
     payload: { error }
-});
+})};
 
 export const fetchProductsBegin = () => ({
     type: FETCH_PRODUCTS_BEGIN
@@ -21,8 +22,11 @@ export const fetchProductsBegin = () => ({
 export function fetchProducts() {
     return dispatch => {
       dispatch(fetchProductsBegin());
-        return fetch(config.APILink+'users')
-        .then(res => res.json())
+    var reqconfig = {
+            headers: { Authorization: localStorage.usertoken }
+        };
+        return axios.post(config.APILink+'/users',reqconfig)
+        .then(res => {return res.data;})
         .then(json => {
             dispatch(fetchProductsSuccess(json.results));
             return json.results;

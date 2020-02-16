@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import SendRoomForm from '../SendRoomForm';
 import './RoomList.scss'
+import {Redirect} from  "react-router-dom";
 import config from '../../config'
 class RoomList extends Component {
     constructor(props){
@@ -11,12 +12,20 @@ class RoomList extends Component {
         }
     }
     componentDidMount(){
-        axios.get(config.APILink+'/rooms')
+        var reqconfig = {
+            headers: { Authorization: localStorage.usertoken }
+        };
+        axios.post(config.APILink+'/rooms',reqconfig)
         .then(res=>{
           //  console.log("rooms -> " + res);
+          if(res.data.code===200)
             this.setState({
                 rooms:res.data.results
             })
+            if(res.data.code===204){
+                localStorage.usertoken='';
+                return <Redirect to='/login'  />
+            }
         })
     }
     render() {

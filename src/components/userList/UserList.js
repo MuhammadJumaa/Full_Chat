@@ -49,7 +49,7 @@ class UserList extends Component {
 const mapStateToProps = state => ({
     users: state.users.items,
     loading: state.users.loading,
-    error: state.users.error
+    error: state.users.error,
   });
 //mapstatetoprops -> state'de o anda ne var ise onu 
 //component içerisinde props olarak kullanmamızı sağlayan bir map'leme işlemi...
