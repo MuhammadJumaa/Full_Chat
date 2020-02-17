@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import UserList from '../components/userList/UserList';
 import MessageList from '../components/messageList/MessageList';
 import RoomList from '../components/roomList/RoomList';
-
 import {Redirect} from  "react-router-dom";
+import Header from '../components/header/Header';
 //var jwtDecode = require('jwt-decode');
 
 //const URL = 'ws://localhost:3030'
@@ -44,13 +44,18 @@ class Chat extends Component {
           }
         return(
             <main>
-                <UserList />
-                <MessageList
-                    messages={this.state.messages}
-                    ws={this.ws}
-                    onSubmitMessage={messageString => this.submitMessage(messageString)}
-                 />
-                <RoomList />
+                <Header/>
+                <section className="chatMain">
+                    <UserList />
+                    <MessageList
+                        messages={this.state.messages}
+                        ws={this.ws}
+                        onSubmitMessage={messageString => 
+                            this.submitMessage(messageString)}
+                    />
+                    <RoomList />
+                </section>
+
             </main>
         )
     }

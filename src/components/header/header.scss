@@ -1,0 +1,21 @@
+header {
+    background-color:#1675e0;
+    padding:15px 10px;
+    .info {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        color:white;
+        h1 {
+            font-size: 14px;
+            font-family: Helvetica, sans-serif !important;
+        }
+        i {
+            margin:0 20px 0px 10px;
+        }
+        a {
+            color:white;
+            font-size: 14px;
+        }
+    }
+}

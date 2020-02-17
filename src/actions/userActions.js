@@ -1,3 +1,9 @@
+//Reducer’lara ulaşarak onları tetikleyen, 
+//store’daki güncellemesi gereken veriyi yollan bir araç. 
+//Neyi güncellemesi gerektiğini adlandırırken “type” 
+//ile belirtmemiz gerekirken, değiştirmesi gereken veriyi 
+//payload’larla taşır
+
 import config from '../config';
 
 import axios from 'axios';
@@ -10,7 +16,8 @@ export const fetchProductsSuccess = users => ({
   payload: { users }
 });
 
-export const fetchProductsFailure = error => function(){ console.log(error,3); return ({
+export const fetchProductsFailure = error => function(){ 
+    console.log(error,3); return ({
     type: FETCH_PRODUCTS_FAILURE,
     payload: { error }
 })};
