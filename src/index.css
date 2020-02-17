@@ -22,8 +22,11 @@ code {
 h1 {
   line-height: normal !important;
 }
+main {
+  height: 100%;
+}
 #root ,.App {height: 100%;}
-#root main .chatMain{display: flex; height:100%;}
+#root main .chatMain{display: flex; height:100%;padding-top: 50px;}
 
 .show-fake-browser.login-page .rs-content {
   padding: 20px;

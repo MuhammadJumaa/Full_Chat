@@ -13,14 +13,8 @@ class UserList extends Component {
         return (
             <section className="userList">
                 <div className="messengerSearch">
-                    <div className="settings">
-                        <a href="#/" className="cog">
-                            <Icon icon="cogs" />
-                        </a>
-                        <h5>{this.props.user}</h5>
-                        <a href="#/" className="plus">
-                            <Icon icon='plus' />
-                        </a>
+                    <div className="title">
+                       <h1>User List</h1>   
                     </div>
                     <div className="search">
                         <Input placeholder="Search Messages" />

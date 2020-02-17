@@ -1,24 +1,18 @@
 .userList {
     width: 500px;
-    padding: 20px 10px;
+    padding: 10px 10px;
     height: 100%;
     overflow: auto;
   
     .messengerSearch {
       margin-bottom: 20px;
   
-      .settings {
+      .title {
         margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-  
-        a i:before {
-          font-size: 22px;
-        }
-  
-        h5 {
+        text-align: center;
+        h1 {
           color: black;
+          font-size:22px;
         }
       }
     }
