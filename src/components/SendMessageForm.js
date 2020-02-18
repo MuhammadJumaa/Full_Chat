@@ -10,6 +10,7 @@ class SendMessageForm extends Component {
         super()
         this.state = {
             message: '',
+            disabled: true
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,12 +32,12 @@ class SendMessageForm extends Component {
                 <form
                     onSubmit={this.handleSubmit}
                     className="send-message-form">
-                    <input
+                    <input disabled={this.state.disabled}
                         className="rs-input"
                         onChange={this.handleChange}
                         value={this.state.message}
                         placeholder="Type A Message @name" />
-                    <Button type="submit" value={'Send'} color="blue">Send</Button>
+                    <Button disabled={this.state.disabled} type="submit" value={'Send'} color="blue">Send</Button>
                 </form>
             </div>
         )

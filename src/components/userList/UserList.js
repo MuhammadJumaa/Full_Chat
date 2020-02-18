@@ -1,14 +1,25 @@
 import React, { Component } from 'react'
-import { Input , Icon } from 'rsuite';
+import { Input } from 'rsuite';
 import './UserList.scss';
 import {fetchProducts} from '../../actions/userActions';
 import {connect} from 'react-redux';
+import {Redirect} from  "react-router-dom";
+var jwtDecode = require('jwt-decode');
 
 class UserList extends Component {
     componentDidMount() {
         this.props.dispatch(fetchProducts());
     }
+    GetMessages=(UserId)=>{
+console.log(UserId);
+    }
     render() {
+        try{
+            console.log(jwtDecode(localStorage.usertoken));
+            jwtDecode(localStorage.usertoken)
+        }catch(error){
+            return <Redirect to='/login'/>;
+        }
         const { users } = this.props;
         return (
             <section className="userList">
@@ -22,7 +33,7 @@ class UserList extends Component {
                 </div>
                 <div className="usersList">
                 {users.map(user =>
-                    <div className="item" key={user.id}>
+                    <div className="item" key={user.id} onClick={this.GetMessages.bind(this,user.id)}>
                         <div className="itemCont">
                             <div className="img">
                                 <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="test" />

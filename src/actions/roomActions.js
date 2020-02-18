@@ -5,30 +5,15 @@
 //payload’larla taşır
 
 import config from '../config';
-
 import axios from 'axios';
-export const FETCH_ROOMS_SUCCESS = 'FETCH_ROOMS_SUCCESS';
-export const FETCH_ROOMS_FAILURE = 'FETCH_ROOMS_FAILURE';
-export const FETCH_ROOMS_BEGIN   = 'FETCH_ROOMS_BEGIN';
 
 export const fetchRoomsSuccess = rooms => ({
-  type: FETCH_ROOMS_SUCCESS,
+  type: 'FETCH_ROOMS_SUCCESS',
   payload: { rooms }
-});
-
-export const fetchRoomsFailure = error => function(){ 
-    console.log(error,3); return ({
-    type: FETCH_ROOMS_FAILURE,
-    payload: { error }
-})};
-
-export const fetchRoomsBegin = () => ({
-    type: FETCH_ROOMS_BEGIN
 });
 
 export function fetchRooms() {
     return dispatch => {
-      dispatch(fetchRoomsBegin());
         var reqconfig = {
             headers: { Authorization: localStorage.usertoken }
         };
@@ -38,6 +23,6 @@ export function fetchRooms() {
             dispatch(fetchRoomsSuccess(json.results));
             return json.results;
         })
-        .catch(error => dispatch(fetchRoomsFailure(error)));
+        .catch(error => error);
     };
 }

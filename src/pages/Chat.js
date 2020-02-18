@@ -4,7 +4,7 @@ import MessageList from '../components/messageList/MessageList';
 import RoomList from '../components/roomList/RoomList';
 import {Redirect} from  "react-router-dom";
 import Header from '../components/header/Header';
-//var jwtDecode = require('jwt-decode');
+var jwtDecode = require('jwt-decode');
 
 //const URL = 'ws://localhost:3030'
 
@@ -39,9 +39,11 @@ class Chat extends Component {
     }
     
     render(){
-        if (!localStorage.usertoken) {
+        try{
+            jwtDecode(localStorage.usertoken)
+        }catch(error){
             return <Redirect to='/login'/>;
-          }
+        }
         return(
             <main>
                 <Header/>

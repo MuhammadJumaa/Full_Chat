@@ -36,8 +36,7 @@ class RoomList extends Component {
 
 const mapStateToProps = state => ({
     rooms: state.rooms.items,
-    loading: state.rooms.loading,
-    error: state.rooms.error,
+    users:state.users.items
 });
 //mapstatetoprops -> state'de o anda ne var ise onu 
 //component içerisinde props olarak kullanmamızı sağlayan bir map'leme işlemi...
