@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Input } from 'rsuite';
 import './UserList.scss';
-import {fetchProducts} from '../../actions/userActions';
+import {fetchProducts,fetchInputState} from '../../actions/rootActions';
 import {connect} from 'react-redux';
 import {Redirect} from  "react-router-dom";
 var jwtDecode = require('jwt-decode');
@@ -10,8 +10,8 @@ class UserList extends Component {
     componentDidMount() {
         this.props.dispatch(fetchProducts());
     }
-    GetMessages=(UserId)=>{
-console.log(UserId);
+    GetMessages=(friendId)=>{
+        this.props.dispatch(fetchInputState(friendId));
     }
     render() {
         try{
@@ -20,7 +20,7 @@ console.log(UserId);
         }catch(error){
             return <Redirect to='/login'/>;
         }
-        const { users } = this.props;
+        const { app } = this.props;
         return (
             <section className="userList">
                 <div className="messengerSearch">
@@ -32,7 +32,7 @@ console.log(UserId);
                     </div>
                 </div>
                 <div className="usersList">
-                {users.map(user =>
+                {app.map(user =>
                     <div className="item" key={user.id} onClick={this.GetMessages.bind(this,user.id)}>
                         <div className="itemCont">
                             <div className="img">
@@ -52,9 +52,7 @@ console.log(UserId);
 }
 
 const mapStateToProps = state => ({
-    users: state.users.items,
-    loading: state.users.loading,
-    error: state.users.error,
+    app: state.app.users
   });
 //mapstatetoprops -> state'de o anda ne var ise onu 
 //component içerisinde props olarak kullanmamızı sağlayan bir map'leme işlemi...

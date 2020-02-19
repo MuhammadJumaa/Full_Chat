@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import SendRoomForm from '../SendRoomForm';
-import {fetchRooms} from '../../actions/roomActions';
+import {fetchRooms} from '../../actions/rootActions';
 import {connect} from 'react-redux';
 import './RoomList.scss'
 
@@ -9,7 +9,7 @@ class RoomList extends Component {
         this.props.dispatch(fetchRooms());
     }
     render() {
-        const { rooms } = this.props;
+        const { app } = this.props;
         return (
             <section className="roomCont">
                 <div className="title">
@@ -18,7 +18,7 @@ class RoomList extends Component {
                 <div className="roomList">
                     <div className="list">
                         <ul>
-                            {rooms.map(room =>
+                            {app.map(room =>
                                 <li key={room.id}>
                                     <a href="/#">
                                         {room.name}
@@ -35,8 +35,7 @@ class RoomList extends Component {
 }
 
 const mapStateToProps = state => ({
-    rooms: state.rooms.items,
-    users:state.users.items
+    app: state.app.rooms,
 });
 //mapstatetoprops -> state'de o anda ne var ise onu 
 //component içerisinde props olarak kullanmamızı sağlayan bir map'leme işlemi...
