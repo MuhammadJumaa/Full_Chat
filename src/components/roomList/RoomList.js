@@ -10,9 +10,7 @@ class RoomList extends Component {
         this.props.dispatch(fetchRooms());
     }
     render() {
-       // const { code } = this.props;
         const { app } = this.props;
-        //console.log(this.props);
         if(this.props.code===204){
             localStorage.usertoken='';
             return <Redirect to='/login'/>;

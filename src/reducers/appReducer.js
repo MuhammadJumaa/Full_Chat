@@ -7,37 +7,44 @@
 
 
 const initialState = {
-    rooms: [],
-    users: [],
-    currentConversationMessages: [],
-    inputState : true,
-    code :0
-  };
+  rooms: [],
+  users: [],
+  currentConversationMessages: [],
+  inputState: true,
+  code: 0,
+  activeClass: false,
+  friendId:0
+};
 
-  export default function appReducer(state = initialState, action) {
-    switch(action.type) {
-      case 'FETCH_ROOMS_SUCCESS':
-       // console.log(action);
-        return {
-          ...state,
-          rooms: action.payload,
-          code:action.code
-        };
-      case 'FETCH_PRODUCTS_SUCCESS':
-        return {
-          ...state,
-          users: action.payload,
-          code:action.code
-        };
-        
-        case 'FETCH_ACTIVE_INPUT':
-          return {
-            ...state,
-            inputState :  false,
-            currentConversationMessages:action.payload.messages
-          };
-      default:
-        return state;
-    }
-    
+export default function appReducer(state = initialState, action) {
+  switch (action.type) {
+    case 'FETCH_ROOMS_SUCCESS':
+      // console.log(action);
+      return {
+        ...state,
+        rooms: action.payload,
+        code: action.code
+      };
+    case 'FETCH_PRODUCTS_SUCCESS':
+      return {
+        ...state,
+        users: action.payload,
+        code: action.code
+      };
+    case 'FETCH_ACTIVE_INPUT':
+      return {
+        ...state,
+        inputState: false,
+        currentConversationMessages: action.payload.messages 
+      
+      };
+    case 'FETCH_SEND_MESSAGE':
+      return {
+        ...state,
+        message: action.payload.messages
+      };
+    default:
+      return state;
   }
+
+}

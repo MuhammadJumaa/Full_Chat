@@ -3,8 +3,7 @@ import { Input } from 'rsuite';
 import './UserList.scss';
 import {fetchProducts,fetchInputState} from '../../actions/rootActions';
 import {connect} from 'react-redux';
-import {Redirect} from  "react-router-dom";
-var jwtDecode = require('jwt-decode');
+//import {Redirect} from  "react-router-dom";
 
 class UserList extends Component {
     componentDidMount() {
@@ -14,15 +13,12 @@ class UserList extends Component {
         this.props.dispatch(fetchInputState(friendId));
     }
     render() {
-        
         const { app } = this.props;
-        //console.log(this.props)
-        if(this.props.code===204){
-            localStorage.usertoken='';
-            return <Redirect to='/login'/>;
-        }
-         
-       // const results=app.results;
+        //const {activeClass} = this.props;
+        // if(this.props.code===204){
+        //     localStorage.usertoken='';
+        //     return <Redirect to='/login'/>;
+        // }
         return (
             <section className="userList">
                 <div className="messengerSearch">
@@ -38,7 +34,7 @@ class UserList extends Component {
                     <div className="item" key={user.id} onClick={this.GetMessages.bind(this,user.id)}>
                         <div className="itemCont">
                             <div className="img">
-                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="test" />
+                                <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" alt="test" />
                             </div>
                             <div className="text">
                                 <h1>{user.name} / {user.username}</h1>
@@ -55,7 +51,8 @@ class UserList extends Component {
 
 const mapStateToProps = state => ({
     app: state.app.users,
-    code: state.app.code
+    code: state.app.code,
+    activeClass:state.app.activeClass
   });
 //mapstatetoprops -> state'de o anda ne var ise onu 
 //component içerisinde props olarak kullanmamızı sağlayan bir map'leme işlemi...

@@ -21,7 +21,7 @@ class Header extends Component {
                 <div className="info">
                     <h1>{userData.email}</h1>
                     <Icon icon="user-circle" />
-                    <a appearance="ghost" onClick={this.Logout} href="#">Logout</a>
+                    <a appearance="ghost" onClick={this.Logout} href="#/">Logout</a>
                 </div>
             </header>
         )

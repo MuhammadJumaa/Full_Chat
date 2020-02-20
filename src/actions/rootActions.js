@@ -9,12 +9,11 @@ import axios from 'axios';
 
 export const fetchRoomsSuccess = rooms => 
     {
-        //console.log(rooms);
-        return {
-  type: 'FETCH_ROOMS_SUCCESS',
-  payload:  rooms.results,
-  code: rooms.code
-}
+    return {
+        type: 'FETCH_ROOMS_SUCCESS',
+        payload:  rooms.results,
+        code: rooms.code
+    }
 };
 
 export function fetchRooms() {
@@ -73,7 +72,6 @@ export function fetchInputState(friendId){
         })
         .catch(error => error);
     };
-  
 }
 
 
@@ -82,5 +80,27 @@ export const fetchInputStateSuccess = (messages) => ( {
     payload: { inputState : true ,messages:messages}
   });
 
+
+
+  export function fetchSendMessage(message,friendId){
+    return dispatch => {
+        var reqconfig = {
+            headers: { Authorization: localStorage.usertoken },
+            'friend_id':friendId
+        };
+        return axios.post(config.APILink+'/AddMessages',reqconfig)
+        .then(res => {return res.data;})
+        .then(json => {
+            dispatch(fetchSendMessageSuccess(json.results));
+            return json.results;
+        })
+        .catch(error => error);
+    };
+}
+
+export const fetchSendMessageSuccess = (messages) => ( {
+    type: 'FETCH_SEND_MESSAGE',
+    payload: {messages:messages}
+  });
 
   

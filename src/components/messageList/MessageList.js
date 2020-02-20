@@ -15,6 +15,7 @@ class MessageList extends Component {
     render() {
         
         const { currentConversationMessages } = this.props;
+        console.log(currentConversationMessages);
         return (
             <section className="messageList">
                 <div className="top">
@@ -29,7 +30,7 @@ class MessageList extends Component {
                         currentConversationMessages.map((message,index)=>{
                             return(
                                 <Message 
-                                    key={index} text={message.message}
+                                    key={index} text={message.message} sender={message.sender} senderUser={message.senderUser}
                                 />
                             )
                         })

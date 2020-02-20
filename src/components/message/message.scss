@@ -1,8 +1,14 @@
 
 .message {
     margin-bottom: 10px;
+    width: 100%;
+    &.right {
+        float: right;
+        text-align: right;
+    }
     .message-username {
-        font-size: 14px;
+        font-size: 16px;
+        margin-bottom: 10px;
     }
     .message-text {
         background-color:#3c5b99;

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Button } from 'rsuite';
+import { Button } from 'rsuite'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux';
+import {connect} from 'react-redux'
+import {fetchSendMessage} from '../actions/rootActions';
+
 
 class SendMessageForm extends Component {
     static propTypes = {
@@ -10,8 +12,8 @@ class SendMessageForm extends Component {
     constructor() {
         super()
         this.state = {
-            message: '',
-            disabled: true
+            disabled: true,
+            message:''
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,7 +25,7 @@ class SendMessageForm extends Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        this.props.onSubmitMessage(this.state.message)
+        this.props.dispatch(fetchSendMessage(this.state.message))
         this.setState({ message: '' });
     }
     render() {
@@ -46,6 +48,7 @@ class SendMessageForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    inputState:state.app.inputState
+    inputState:state.app.inputState,
+    message:state.app.message
 });
 export default connect(mapStateToProps)(SendMessageForm);
