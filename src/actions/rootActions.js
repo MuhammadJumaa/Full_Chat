@@ -7,10 +7,15 @@
 import config from '../config';
 import axios from 'axios';
 
-export const fetchRoomsSuccess = rooms => ({
+export const fetchRoomsSuccess = rooms => 
+    {
+        //console.log(rooms);
+        return {
   type: 'FETCH_ROOMS_SUCCESS',
-  payload: { rooms }
-});
+  payload:  rooms.results,
+  code: rooms.code
+}
+};
 
 export function fetchRooms() {
     return dispatch => {
@@ -20,8 +25,9 @@ export function fetchRooms() {
         return axios.post(config.APILink+'/rooms',reqconfig)
         .then(res => {return res.data;})
         .then(json => {
-            dispatch(fetchRoomsSuccess(json.results));
-            return json.results;
+          //  console.log(json);
+            dispatch(fetchRoomsSuccess(json));
+            return json;
         })
         .catch(error => error);
     };
@@ -32,7 +38,8 @@ export function fetchRooms() {
 
 export const fetchProductsSuccess = users => ({
   type: 'FETCH_PRODUCTS_SUCCESS',
-  payload: { users }
+  payload:  users.results ,
+  code: users.code
 });
 
 export function fetchProducts() {
@@ -43,8 +50,8 @@ export function fetchProducts() {
         return axios.post(config.APILink+'/users',reqconfig)
         .then(res => {return res.data;})
         .then(json => {
-            dispatch(fetchProductsSuccess(json.results));
-            return json.results;
+            dispatch(fetchProductsSuccess(json));
+            return json;
         })
         .catch(error => error);
     };

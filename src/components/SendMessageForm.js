@@ -25,11 +25,9 @@ class SendMessageForm extends Component {
         e.preventDefault();
         this.props.onSubmitMessage(this.state.message)
         this.setState({ message: '' });
-        console.log(this.state.message);
     }
     render() {
         const { inputState } = this.props;
-        console.log(inputState);
         return (
             <div className="bottom">
                 <form

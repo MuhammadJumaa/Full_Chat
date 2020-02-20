@@ -14,13 +14,15 @@ class UserList extends Component {
         this.props.dispatch(fetchInputState(friendId));
     }
     render() {
-        try{
-            console.log(jwtDecode(localStorage.usertoken));
-            jwtDecode(localStorage.usertoken)
-        }catch(error){
+        
+        const { app } = this.props;
+        //console.log(this.props)
+        if(this.props.code===204){
+            localStorage.usertoken='';
             return <Redirect to='/login'/>;
         }
-        const { app } = this.props;
+         
+       // const results=app.results;
         return (
             <section className="userList">
                 <div className="messengerSearch">
@@ -52,7 +54,8 @@ class UserList extends Component {
 }
 
 const mapStateToProps = state => ({
-    app: state.app.users
+    app: state.app.users,
+    code: state.app.code
   });
 //mapstatetoprops -> state'de o anda ne var ise onu 
 //component içerisinde props olarak kullanmamızı sağlayan bir map'leme işlemi...

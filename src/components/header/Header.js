@@ -16,7 +16,6 @@ class Header extends Component {
         }catch(error){
             return <Redirect to='/login'/>;
         };
-        console.log(userData);
         return (
             <header>
                 <div className="info">

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SendRoomForm from '../SendRoomForm';
 import {fetchRooms} from '../../actions/rootActions';
 import {connect} from 'react-redux';
+import {Redirect} from  "react-router-dom";
 import './RoomList.scss'
 
 class RoomList extends Component {
@@ -9,7 +10,13 @@ class RoomList extends Component {
         this.props.dispatch(fetchRooms());
     }
     render() {
+       // const { code } = this.props;
         const { app } = this.props;
+        //console.log(this.props);
+        if(this.props.code===204){
+            localStorage.usertoken='';
+            return <Redirect to='/login'/>;
+        }
         return (
             <section className="roomCont">
                 <div className="title">
@@ -34,9 +41,13 @@ class RoomList extends Component {
     }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => {
+    //console.log(state);
+    return {
     app: state.app.rooms,
-});
+    code: state.app.code
+}
+};
 //mapstatetoprops -> state'de o anda ne var ise onu 
 //component içerisinde props olarak kullanmamızı sağlayan bir map'leme işlemi...
 
