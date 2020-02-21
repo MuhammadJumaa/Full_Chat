@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {fetchSendMessage} from '../actions/rootActions';
 
-
 class SendMessageForm extends Component {
     static propTypes = {
         onSubmitMessage: PropTypes.func.isRequired,
@@ -20,16 +19,19 @@ class SendMessageForm extends Component {
     }
     handleChange(e) {
         this.setState({
-            message: e.target.value
+            message: e.target.value,
         });
     }
     handleSubmit(e) {
         e.preventDefault();
-        this.props.dispatch(fetchSendMessage(this.state.message))
-        this.setState({ message: '' });
+        const {friendId } = this.props;
+        this.props.dispatch(fetchSendMessage(this.state.message,friendId))
+        this.setState({ 
+            message: '' 
+        });
     }
     render() {
-        const { inputState } = this.props;
+        const { inputState} = this.props;
         return (
             <div className="bottom">
                 <form
@@ -49,6 +51,7 @@ class SendMessageForm extends Component {
 
 const mapStateToProps = state => ({
     inputState:state.app.inputState,
-    message:state.app.message
+    message:state.app.message,
+    friendId:state.app.friendId
 });
 export default connect(mapStateToProps)(SendMessageForm);

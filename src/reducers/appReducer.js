@@ -35,13 +35,13 @@ export default function appReducer(state = initialState, action) {
       return {
         ...state,
         inputState: false,
-        currentConversationMessages: action.payload.messages 
-      
+        currentConversationMessages: action.payload.messages,
+        friendId: action.payload.friendId
       };
     case 'FETCH_SEND_MESSAGE':
       return {
         ...state,
-        message: action.payload.messages
+        message: action.payload.messages,
       };
     default:
       return state;

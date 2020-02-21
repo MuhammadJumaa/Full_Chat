@@ -3,7 +3,6 @@ import { Input } from 'rsuite';
 import './UserList.scss';
 import {fetchProducts,fetchInputState} from '../../actions/rootActions';
 import {connect} from 'react-redux';
-//import {Redirect} from  "react-router-dom";
 
 class UserList extends Component {
     componentDidMount() {
@@ -11,14 +10,10 @@ class UserList extends Component {
     }
     GetMessages=(friendId)=>{
         this.props.dispatch(fetchInputState(friendId));
+        console.log(friendId)
     }
     render() {
         const { app } = this.props;
-        //const {activeClass} = this.props;
-        // if(this.props.code===204){
-        //     localStorage.usertoken='';
-        //     return <Redirect to='/login'/>;
-        // }
         return (
             <section className="userList">
                 <div className="messengerSearch">
