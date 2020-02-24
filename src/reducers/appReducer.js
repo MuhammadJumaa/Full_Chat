@@ -42,6 +42,7 @@ export default function appReducer(state = initialState, action) {
       return {
         ...state,
         message: action.payload.messages,
+        currentConversationMessages:[...state.currentConversationMessages, action.payload.messages]
       };
     default:
       return state;

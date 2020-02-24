@@ -24,11 +24,12 @@ class SendMessageForm extends Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        const {friendId } = this.props;
+        const {friendId ,currentConversationMessages} = this.props;
         this.props.dispatch(fetchSendMessage(this.state.message,friendId))
         this.setState({ 
-            message: '' 
+            message: '',
         });
+        console.log(currentConversationMessages)
     }
     render() {
         const { inputState} = this.props;
@@ -52,6 +53,7 @@ class SendMessageForm extends Component {
 const mapStateToProps = state => ({
     inputState:state.app.inputState,
     message:state.app.message,
-    friendId:state.app.friendId
+    friendId:state.app.friendId,
+    currentConversationMessages: state.app.currentConversationMessages
 });
 export default connect(mapStateToProps)(SendMessageForm);

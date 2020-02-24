@@ -108,7 +108,7 @@ export function fetchSendMessage(message, friendId) {
 export const fetchSendMessageSuccess = (messages) => ({
     type: 'FETCH_SEND_MESSAGE',
     payload: {
-        messages: messages
+        messages:messages
     },
 });
 
