@@ -24,7 +24,7 @@ class SendMessageForm extends Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        const {friendId ,currentConversationMessages} = this.props;
+        const {friendId} = this.props;
         this.props.dispatch(fetchSendMessage(this.state.message,friendId))
         this.setState({ 
             message: '',

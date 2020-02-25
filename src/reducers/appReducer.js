@@ -12,7 +12,6 @@ const initialState = {
   currentConversationMessages: [],
   inputState: true,
   code: 0,
-  activeClass: false,
   friendId:0
 };
 

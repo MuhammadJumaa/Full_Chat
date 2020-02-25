@@ -12,7 +12,7 @@ class UserList extends Component {
         this.props.dispatch(fetchInputState(friendId));
     }
     render() {
-        const { app } = this.props;
+        const { app,friendId } = this.props;
         return (
             <section className="userList">
                 <div className="messengerSearch">
@@ -25,7 +25,7 @@ class UserList extends Component {
                 </div>
                 <div className="usersList">
                 {app.map(user =>
-                    <div className="item" key={user.id} onClick={this.GetMessages.bind(this,user.id)}>
+                    <div className={friendId === user.id ? "item active" : "item"} key={user.id} onClick={this.GetMessages.bind(this,user.id)}>
                         <div className="itemCont">
                             <div className="img">
                                 <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" alt="test" />
@@ -46,7 +46,8 @@ class UserList extends Component {
 const mapStateToProps = state => ({
     app: state.app.users,
     code: state.app.code,
-    activeClass:state.app.activeClass
+    activeClass:state.app.activeClass,
+    friendId:state.app.friendId
   });
 //mapstatetoprops -> state'de o anda ne var ise onu 
 //component içerisinde props olarak kullanmamızı sağlayan bir map'leme işlemi...
