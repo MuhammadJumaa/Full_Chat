@@ -7,7 +7,6 @@ import config from '../config'
 export default function Login() {
     var history = useHistory();
     const { register, handleSubmit, errors } = useForm();
-    //const onSubmit = data => console.log(data);
     const onSubmit = async data => { 
         axios.post(config.APILink+`login`, { data })
             .then(res => {

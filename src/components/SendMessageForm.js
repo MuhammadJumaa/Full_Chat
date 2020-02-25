@@ -29,7 +29,6 @@ class SendMessageForm extends Component {
         this.setState({ 
             message: '',
         });
-        console.log(currentConversationMessages)
     }
     render() {
         const { inputState} = this.props;

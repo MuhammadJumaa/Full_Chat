@@ -23,7 +23,6 @@ export function fetchRooms() {
         return axios.post(config.APILink + '/rooms', reqconfig)
             .then(res => { return res.data; })
             .then(json => {
-                //  console.log(json);
                 dispatch(fetchRoomsSuccess(json));
                 return json;
             })

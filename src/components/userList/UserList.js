@@ -10,7 +10,6 @@ class UserList extends Component {
     }
     GetMessages=(friendId)=>{
         this.props.dispatch(fetchInputState(friendId));
-        console.log(friendId)
     }
     render() {
         const { app } = this.props;

@@ -10,8 +10,6 @@ export default function Register() {
     const onSubmit = async data => { 
         axios.post(config.APILink+`register`, { data })
             .then(res => {
-                console.log(res);
-                console.log(res.data);
                 Alert.success('Registration Successful', 5000);
                 history.push('/login')
                 document.getElementById("registerForm").reset();

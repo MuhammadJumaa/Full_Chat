@@ -40,7 +40,6 @@ class RoomList extends Component {
 }
 
 const mapStateToProps = state => {
-    //console.log(state);
     return {
     app: state.app.rooms,
     code: state.app.code

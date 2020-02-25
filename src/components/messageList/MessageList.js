@@ -19,7 +19,6 @@ class MessageList extends Component {
     }
     render() {
         const { currentConversationMessages } = this.props;
-        console.log(currentConversationMessages);
         return (
             <article className="center">
                 <div >
