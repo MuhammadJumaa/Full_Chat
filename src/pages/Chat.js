@@ -49,12 +49,21 @@ class Chat extends Component {
                 <Header/>
                 <section className="chatMain">
                     <UserList />
-                    <MessageList
-                        messages={this.state.messages}
-                        ws={this.ws}
-                        onSubmitMessage={messageString => 
-                            this.submitMessage(messageString)}
-                    />
+                    <section className="messageList">
+                        <div className="top">
+                            <div className="titleAndIcons">
+                                <div className="title">
+                                    <h1>Chat</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <MessageList
+                            messages={this.state.messages}
+                            ws={this.ws}
+                            onSubmitMessage={messageString => 
+                                this.submitMessage(messageString)}
+                        />
+                    </section>
                     <RoomList />
                 </section>
 

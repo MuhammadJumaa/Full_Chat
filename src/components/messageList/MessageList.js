@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom';
 import SendMessageForm from '../SendMessageForm';
 import { connect } from 'react-redux';
 import Message from '../message/Message';
@@ -12,19 +13,16 @@ class MessageList extends Component {
             key:''
         }
     }
+    componentDidUpdate(){
+        const node = ReactDOM.findDOMNode(this)
+        node.scrollTop = node.scrollHeight
+    }
     render() {
         const { currentConversationMessages } = this.props;
         console.log(currentConversationMessages);
         return (
-            <section className="messageList">
-                <div className="top">
-                    <div className="titleAndIcons">
-                        <div className="title">
-                            <h1>Chat</h1>
-                        </div>
-                    </div>
-                </div>
-                <div className="center">
+            <article className="center">
+                <div >
                     {
                         currentConversationMessages.map((message,index)=>{
                             return(
@@ -39,7 +37,7 @@ class MessageList extends Component {
                 <SendMessageForm 
                     onSubmitMessage = {this.props.onSubmitMessage}
                 />
-            </section>
+            </article>
         )
     }
 }
