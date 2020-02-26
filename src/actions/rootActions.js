@@ -7,6 +7,8 @@
 import config from '../config';
 import axios from 'axios';
 
+
+//rooms
 export const fetchRoomsSuccess = rooms => {
     return {
         type: 'FETCH_ROOMS_SUCCESS',
@@ -32,14 +34,7 @@ export function fetchRooms() {
 
 
 //users
-
-export const fetchProductsSuccess = users => ({
-    type: 'FETCH_PRODUCTS_SUCCESS',
-    payload: users.results,
-    code: users.code
-});
-
-export function fetchProducts() {
+export function fetchUsers() {
     return dispatch => {
         var reqconfig = {
             headers: { Authorization: localStorage.usertoken }
@@ -47,15 +42,20 @@ export function fetchProducts() {
         return axios.post(config.APILink + '/users', reqconfig)
             .then(res => { return res.data; })
             .then(json => {
-                dispatch(fetchProductsSuccess(json));
+                dispatch(fetchUsersSuccess(json));
                 return json;
             })
             .catch(error => error);
     };
 }
 
+export const fetchUsersSuccess = users => ({
+    type: 'FETCH_USERS_SUCCESS',
+    payload: users.results,
+    code: users.code
+});
 
-
+//getMessage , inputActive
 export function fetchInputState(friendId) {
     return dispatch => {
         var reqconfig = {
@@ -76,14 +76,13 @@ export function fetchInputState(friendId) {
 export const fetchInputStateSuccess = (messages,friendId) => ({
     type: 'FETCH_ACTIVE_INPUT',
     payload: {
-        inputState: true,
         messages: messages ,
         friendId:friendId
     }
 });
 
 
-
+//sendMessage
 export function fetchSendMessage(message, friendId) {
     return dispatch => {
         var reqconfig = {

@@ -19,12 +19,15 @@
   
     .usersList {
       .item {
+        cursor: pointer;
         margin-bottom: 15px;
+        padding: 7px 5px;
+        border-radius: 5px;
         &:last-child {
           margin-bottom: 0;
         }
         &.active {
-          background-color: #c9c9c9;
+          background-color:#e4e4e4;
         }
         .itemCont {
           display: flex;
@@ -34,7 +37,7 @@
     
         .img {
           img {
-            width: 70px;
+            width:50px;
             border-radius: 100%;
           }
         }

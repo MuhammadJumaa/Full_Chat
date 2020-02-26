@@ -1,18 +1,34 @@
 import React, { Component } from 'react'
-import { Input } from 'rsuite';
-import './UserList.scss';
-import {fetchProducts,fetchInputState} from '../../actions/rootActions';
+import {fetchUsers,fetchInputState} from '../../actions/rootActions';
 import {connect} from 'react-redux';
+import './UserList.scss';
 
 class UserList extends Component {
+    constructor(){
+        super();
+        this.state = {
+            search:''
+        }
+        this.changeSearch = this.changeSearch.bind(this);
+    }
+    changeSearch(e){
+        this.setState({
+            search:e.target.value,
+        });
+    }
     componentDidMount() {
-        this.props.dispatch(fetchProducts());
+        this.props.dispatch(fetchUsers());
     }
     GetMessages=(friendId)=>{
         this.props.dispatch(fetchInputState(friendId));
     }
     render() {
         const { app,friendId } = this.props;
+        let filterUsers = app.filter(
+            (users)=>{
+                return users.name.indexOf(this.state.search)!==-1;
+            }
+        )
         return (
             <section className="userList">
                 <div className="messengerSearch">
@@ -20,11 +36,15 @@ class UserList extends Component {
                        <h1>User List</h1>   
                     </div>
                     <div className="search">
-                        <Input placeholder="Search Messages" />
+                        <input
+                         onChange={this.changeSearch}
+                         value={this.state.search}
+                         className="rs-input"
+                         placeholder="Search Users" />
                     </div>
                 </div>
                 <div className="usersList">
-                {app.map(user =>
+                {filterUsers.map(user =>
                     <div className={friendId === user.id ? "item active" : "item"} key={user.id} onClick={this.GetMessages.bind(this,user.id)}>
                         <div className="itemCont">
                             <div className="img">

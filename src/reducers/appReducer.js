@@ -18,13 +18,12 @@ const initialState = {
 export default function appReducer(state = initialState, action) {
   switch (action.type) {
     case 'FETCH_ROOMS_SUCCESS':
-      // console.log(action);
       return {
         ...state,
         rooms: action.payload,
         code: action.code
       };
-    case 'FETCH_PRODUCTS_SUCCESS':
+    case 'FETCH_USERS_SUCCESS':
       return {
         ...state,
         users: action.payload,
