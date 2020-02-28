@@ -27,7 +27,7 @@ export default function Login() {
         return <Redirect to='/'/>;
       }
     return (
-        <div className="show-fake-browser login-page">
+        <div className="show-fake-browser box-page login">
             <Container>
                 <Header>
                     <Navbar appearance="inverse">

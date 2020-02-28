@@ -8,12 +8,21 @@ header {
         align-items: center;
         justify-content: flex-end;
         color:white;
+        .profile {
+            display: flex;
+            align-items: center;
+            margin:0 20px 0px 10px;
+            &:hover {
+                text-decoration: none;
+                opacity: 0.8;
+            }
+        }
         h1 {
             font-size: 14px;
             font-family: Helvetica, sans-serif !important;
         }
         i {
-            margin:0 20px 0px 10px;
+            margin-left:15px;
         }
         a {
             color:white;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Icon } from 'rsuite';
 import './header.scss';
-import {Redirect} from  "react-router-dom";
+import {Redirect,Link} from  "react-router-dom";
 import {connect} from 'react-redux';
 var jwtDecode = require('jwt-decode');
 
@@ -19,8 +19,10 @@ class Header extends Component {
         return (
             <header>
                 <div className="info">
+                <Link to="/Profile" className="profile">
                     <h1>{userData.email}</h1>
                     <Icon icon="user-circle" />
+                </Link>
                     <a appearance="ghost" onClick={this.Logout} href="#/">Logout</a>
                 </div>
             </header>

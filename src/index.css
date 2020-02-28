@@ -28,12 +28,12 @@ main {
 #root ,.App {height: 100%;}
 #root main .chatMain{display: flex; height:100%;padding-top: 50px;}
 
-.show-fake-browser.login-page .rs-content {
+.show-fake-browser.box-page .rs-content {
   padding: 20px;
   margin: 20px;
   height: 500px;
 }
-.show-fake-browser.login-page .rs-panel {
+.show-fake-browser.box-page .rs-panel {
   margin-top: 70px;
 }
 .navbar-brand {

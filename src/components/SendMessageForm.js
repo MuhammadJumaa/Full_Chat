@@ -22,7 +22,7 @@ class SendMessageForm extends Component {
             message: e.target.value,
             
         });
-        this.state.disabled = false
+        //this.state.disabled = false
        
     }
     handleSubmit(e) {
