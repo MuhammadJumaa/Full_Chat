@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { Container, Header, Navbar, Content, FlexboxGrid, Panel, ButtonToolbar, Button, FormGroup, ControlLabel, Form } from 'rsuite';
+import axios from 'axios';
+import config from '../config';
+import { Container, Header, Navbar, Content, FlexboxGrid, Panel, ButtonToolbar, Button, FormGroup, ControlLabel, Form,Alert } from 'rsuite';
 import { Component } from 'react';
 var jwtDecode = require('jwt-decode');
 
@@ -10,6 +12,7 @@ class Profile extends Component {
         this.state = {
             data: jwtDecode(localStorage.usertoken)
         };
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
     handleChange(event) {
@@ -17,10 +20,21 @@ class Profile extends Component {
         this.setState({
             data:
             {
+                ...this.state.data,
                 [target.name]: target.value
             }
         });     
-        console.log(this.state.data.name)
+    }
+    handleSubmit(event) {
+        const data = this.state.data
+        axios.post(config.APILink+`profile`, { data })
+            .then(res => {
+                Alert.success('Update Successful', 5000);
+        })
+        .catch((e)=> {
+            console.log(e);
+        });
+        event.preventDefault();
     }
     render() {
         const userData = this.state.data
@@ -39,13 +53,13 @@ class Profile extends Component {
                         <FlexboxGrid justify="center">
                             <FlexboxGrid.Item colspan={12}>
                                 <Panel header={<h3>Profile</h3>} bordered>
-                                    <Form id="profileForm">
+                                    <Form id="profileForm" onSubmit={this.handleSubmit}>
                                         <FormGroup>
                                             <ControlLabel>Name</ControlLabel>
                                             <input
                                                 name="name"
                                                 id="name"
-                                                value={userData.name} 
+                                                value={userData.name}
                                                 onChange={this.handleChange} 
                                                 type="text"
                                                 className="rs-input"
