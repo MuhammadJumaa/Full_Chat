@@ -27,9 +27,14 @@ class Profile extends Component {
     }
     handleSubmit(event) {
         const data = this.state.data
-        axios.post(config.APILink+`profile`, { data })
+        var reqconfig = {
+            headers: { Authorization: localStorage.usertoken },
+            ...data
+        };
+        axios.put(config.APILink+`UpdateUser`, reqconfig)
             .then(res => {
                 Alert.success('Update Successful', 5000);
+                localStorage.setItem('usertoken', res.data.token)
         })
         .catch((e)=> {
             console.log(e);
@@ -38,7 +43,6 @@ class Profile extends Component {
     }
     render() {
         const userData = this.state.data
-        console.log(userData)
         return (
             <div className="show-fake-browser box-page profile">
                 <Container>
