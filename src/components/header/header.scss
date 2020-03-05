@@ -3,30 +3,47 @@ header {
     padding:15px 10px;
     position: fixed;
     width: 100%;
-    .info {
+    .titleAndInfo {
         display: flex;
         align-items: center;
-        justify-content: flex-end;
-        color:white;
-        .profile {
-            display: flex;
-            align-items: center;
-            margin:0 20px 0px 10px;
-            &:hover {
-                text-decoration: none;
-                opacity: 0.8;
+        justify-content:space-between;
+        .title {
+            h1 {
+                font-weight: normal;
+                font-size:17px;
+                color:white;
+            }
+            a {
+                &:hover {
+                    text-decoration:none;
+                }
             }
         }
-        h1 {
-            font-size: 14px;
-            font-family: Helvetica, sans-serif !important;
-        }
-        i {
-            margin-left:15px;
-        }
-        a {
+        .info {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
             color:white;
-            font-size: 14px;
+            .profile {
+                display: flex;
+                align-items: center;
+                margin:0 20px 0px 10px;
+                &:hover {
+                    text-decoration: none;
+                    opacity: 0.8;
+                }
+            }
+            h1 {
+                font-size: 14px;
+                font-family: Helvetica, sans-serif !important;
+            }
+            i {
+                margin-left:15px;
+            }
+            a {
+                color:white;
+                font-size: 14px;
+            }
         }
     }
 }

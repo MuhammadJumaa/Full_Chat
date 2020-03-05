@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import axios from 'axios';
 import config from '../config';
-import { Container, Header, Navbar, Content, FlexboxGrid, Panel, ButtonToolbar, Button, FormGroup, ControlLabel, Form,Alert } from 'rsuite';
+import { Container, Content, FlexboxGrid, Panel, ButtonToolbar, Button, FormGroup, ControlLabel, Form,Alert } from 'rsuite';
+import Header from '../components/header/Header';
 import { Component } from 'react';
-var jwtDecode = require('jwt-decode');
 
+var jwtDecode = require('jwt-decode');
 class Profile extends Component {
     constructor(){
         super()
@@ -46,13 +46,7 @@ class Profile extends Component {
         return (
             <div className="show-fake-browser box-page profile">
                 <Container>
-                    <Header>
-                        <Navbar appearance="inverse">
-                            <Navbar.Header>
-                                <Link className="navbar-brand logo" to="/Chat">Chat</Link>
-                            </Navbar.Header>
-                        </Navbar>
-                    </Header>
+                    <Header/>
                     <Content>
                         <FlexboxGrid justify="center">
                             <FlexboxGrid.Item colspan={12}>
