@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { Icon } from 'rsuite';
-import './header.scss';
+import { Dropdown } from 'rsuite';
 import { Redirect, Link } from "react-router-dom";
 import { connect } from 'react-redux';
+import './header.scss';
+
 var jwtDecode = require('jwt-decode');
 
 class Header extends Component {
@@ -25,11 +27,12 @@ class Header extends Component {
                         </Link>
                     </div>
                     <div className="info">
-                        <Link to="/Profile" className="profile">
-                            <h1>{userData.email}</h1>
-                            <Icon icon="user-circle" />
-                        </Link>
-                        <a appearance="ghost" onClick={this.Logout} href="#/">Logout</a>
+                        <Dropdown title={userData.email} placement="bottomEnd">
+                            <Link className="rs-dropdown-item-content" to="/Profile">Profil</Link>
+                            <Link className="rs-dropdown-item-content" to="/ChangePassword">Change Password</Link>
+                            <Link className="rs-dropdown-item-content" appearance="ghost" to="" onClick={this.Logout} href="#/" >Logout</Link>
+                        </Dropdown>
+                        <Icon icon="user-circle" />
                     </div>
                 </div>
             </header>

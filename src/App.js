@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Chat from './pages/Chat';
 import Profile from './pages/Profile';
+import ChangePassword from './pages/ChangePassword';
 import './App.css';
 import 'rsuite/dist/styles/rsuite-default.css';
 
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Register" component={Register} />
           <Route exact path="/Profile" component={Profile} />
+          <Route exact path="/ChangePassword" component={ChangePassword} />
         </Switch>
       </Router>
     </div>

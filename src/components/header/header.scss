@@ -3,6 +3,7 @@ header {
     padding:15px 10px;
     position: fixed;
     width: 100%;
+    z-index: 9;
     .titleAndInfo {
         display: flex;
         align-items: center;
@@ -24,13 +25,15 @@ header {
             align-items: center;
             justify-content: flex-end;
             color:white;
-            .profile {
-                display: flex;
-                align-items: center;
-                margin:0 20px 0px 10px;
+            .rs-btn {
+                color:white;
                 &:hover {
-                    text-decoration: none;
-                    opacity: 0.8;
+                    color:#1675e0;
+                }
+            }
+            .rs-dropdown-open {
+                .rs-btn {
+                    color:#1675e0;
                 }
             }
             h1 {
@@ -40,9 +43,10 @@ header {
             i {
                 margin-left:15px;
             }
-            a {
+            > a {
                 color:white;
                 font-size: 14px;
+                
             }
         }
     }

@@ -26,7 +26,7 @@ main {
   height: 100%;
 }
 #root ,.App {height: 100%;}
-#root main .chatMain{display: flex; height:100%;padding-top: 50px;}
+#root main .chatMain{display: flex; height:100%;padding-top: 65px;}
 
 .show-fake-browser.box-page .rs-content {
   padding: 20px;
