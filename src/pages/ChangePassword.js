@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from "react-router-dom";
+import { Redirect , useHistory } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import config from '../config';
@@ -9,6 +9,7 @@ var jwtDecode = require('jwt-decode');
 
 export default function ChangePassword() {
     const { register, handleSubmit, errors, watch } = useForm();
+    const history = useHistory();
     const onSubmit = async data => {
         console.log(data)
         var reqconfig = {
@@ -19,6 +20,7 @@ export default function ChangePassword() {
             .then(res => {
                 if (res.data.code === 200) {
                     Alert.success(res.data.success, 5000);
+                    history.push('/')
                 } else {
                     console.log(res)
                     Alert.warning(res.data.error, 5000);

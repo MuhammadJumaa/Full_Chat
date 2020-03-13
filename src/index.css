@@ -34,7 +34,7 @@ main {
   height: 500px;
 }
 .show-fake-browser.box-page .rs-panel {
-  margin-top: 70px;
+  margin:70px 0;
 }
 .navbar-brand {
   padding: 18px 20px;

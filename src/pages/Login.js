@@ -15,6 +15,7 @@ export default function Login() {
                     localStorage.setItem('usertoken', res.data.token)
                     history.push('/')
                 }
+                Alert.warning("Login Invalid",5000)
         })
         .catch((e)=> {
             console.log(e);
@@ -59,7 +60,7 @@ export default function Login() {
                                         <input
                                             name="password"
                                             id="password"
-                                            type="text"
+                                            type="password"
                                             className={errors.password ? "rs-input input-error" : "rs-input"}
                                             ref={register({
                                                 required: 'Password Required',

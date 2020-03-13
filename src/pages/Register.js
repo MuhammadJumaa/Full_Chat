@@ -19,7 +19,7 @@ export default function Register() {
         });
     };
     return (
-        <div className="show-fake-browser login-page">
+        <div className="show-fake-browser box-page register">
             <Container>
                 <Header>
                     <Navbar appearance="inverse">

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Icon } from 'rsuite';
 import { Dropdown } from 'rsuite';
 import { Redirect, Link } from "react-router-dom";
 import { connect } from 'react-redux';
@@ -27,12 +26,11 @@ class Header extends Component {
                         </Link>
                     </div>
                     <div className="info">
-                        <Dropdown title={userData.email} placement="bottomEnd">
+                        <Dropdown title={"User : " + userData.email} placement="bottomEnd">
                             <Link className="rs-dropdown-item-content" to="/Profile">Profil</Link>
                             <Link className="rs-dropdown-item-content" to="/ChangePassword">Change Password</Link>
                             <Link className="rs-dropdown-item-content" appearance="ghost" to="" onClick={this.Logout} href="#/" >Logout</Link>
                         </Dropdown>
-                        <Icon icon="user-circle" />
                     </div>
                 </div>
             </header>
